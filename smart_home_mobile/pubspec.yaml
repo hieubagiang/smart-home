@@ -1,0 +1,36 @@
+name: smart_home_mobile
+description: A new smart-home-mobile project.
+publish_to: none
+version: 1.0.0+1
+environment: { sdk: '>=2.12.0 <3.0.0' }
+dependencies:
+  flutter: { sdk: flutter }
+  cupertino_icons: ^1.0.2
+  dotted_border: ^2.0.0+1
+  get: ^4.3.8
+  get_storage: ^2.0.3
+  intl: ^0.17.0
+  json_annotation: ^4.0.1
+  json_serializable: ^4.1.4
+  connectivity: ^3.0.6
+  flutter_screenutil: ^5.0.0+2
+  flutter_svg: ^0.22.0
+  firebase_analytics: ^8.3.0
+  firebase_messaging: ^10.0.5
+  firebase_core: ^1.6.0
+  flutter_local_notifications: ^8.1.1+1
+  equatable: ^2.0.3
+  lottie: ^1.0.1
+  crypto: ^3.0.1
+  convert: ^3.0.0
+  fluttertoast: ^8.0.7
+  dio_cookie_manager: ^2.0.0
+  retrofit: ^2.0.1
+  hive: ^2.0.4
+  pull_to_refresh: ^2.0.0
+  mqtt_client: ^9.6.1
+dev_dependencies:
+  flutter_test: { sdk: flutter }
+  build_runner: ^2.1.1
+  retrofit_generator: ^2.0.1
+flutter: { uses-material-design: true }
