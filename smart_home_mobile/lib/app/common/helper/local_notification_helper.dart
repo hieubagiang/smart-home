@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:smart_home_mobile/app/presentation/utils/colors.dart';
+import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
 
 const notificationChannel = "Pastel notification channel";
 const notificationChannelId = "pastel_channel_id_0";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home_mobile/app/common/utils/styles.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   final String message;

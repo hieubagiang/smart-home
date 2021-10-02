@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_mobile/app/common/utils/styles.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 import 'package:smart_home_mobile/app/presentation/widgets/dialogs_widget/custom_alert_dialog_widget.dart';
 import 'package:smart_home_mobile/app/presentation/widgets/dialogs_widget/custom_cupertion_action_sheet_widget.dart';
 

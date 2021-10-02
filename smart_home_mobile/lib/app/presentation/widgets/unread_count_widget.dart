@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
-
-import '../utils/space.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class UnreadCount extends StatelessWidget {
   final int unreadMail;

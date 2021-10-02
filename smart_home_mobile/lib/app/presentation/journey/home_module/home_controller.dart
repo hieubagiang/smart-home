@@ -18,7 +18,6 @@ class HomePageController extends GetxController {
       final recMess = mqttReceivedMessage.payload as MqttPublishMessage;
       final pt =
       MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
-
       if(mqttReceivedMessage.topic=='smarthome/led'){
         model.value.changeDeviceStatus(mqttReceivedMessage.topic, pt);
         model.refresh();

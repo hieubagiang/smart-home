@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/presentation/utils/colors.dart';
-import 'package:smart_home_mobile/app/presentation/utils/constants.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
+import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
+import 'package:smart_home_mobile/app/common/constants/constants.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class DescriptionConstant {
   static const int EXPAND_TEXT_ANIMATION_LENGTH = 200;

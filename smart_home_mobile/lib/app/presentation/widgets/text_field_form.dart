@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_home_mobile/app/presentation/utils/colors.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
+import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class TextFieldNormal extends StatelessWidget {
   const TextFieldNormal(
@@ -78,7 +78,7 @@ class TextFieldNormal extends StatelessWidget {
             decoration: InputDecoration(
               prefix: prefixWidget,
               focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: ColorUtils.greenColor),
+                  borderSide: BorderSide(color: ColorUtils.activeColor),
                   borderRadius:
                       BorderRadius.circular(BorderUtils.borderTextField)),
               enabledBorder: OutlineInputBorder(

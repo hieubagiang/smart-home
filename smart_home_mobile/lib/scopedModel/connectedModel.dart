@@ -30,7 +30,7 @@ class ConnectedModel {
         topRightIcon: Icons.threesixty,
         bottomRightIcon: Icons.threesixty,
         isEnable: true,
-        subtitle: '70 % brightness',
+        isAuto: true,
         topic: 'smarthome/led'),
 /*    Device(
         title: '',
@@ -50,7 +50,7 @@ class ApplianceListModel extends ConnectedModel {
   void changeDeviceStatus(String topic, String message) {
     allYatch.forEach((element) {
       if (element.topic == topic) {
-        element.changeDeviceStatus(int.parse(message) == 1);
+        element.setStatus(int.parse(message));
       }
     });
   }

@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home_mobile/app/common/utils/date_time.dart';
-import 'package:smart_home_mobile/app/domain/entities/appliance.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/home_controller.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/widgets/device_card_item.dart';
 import 'package:smart_home_mobile/scopedModel/connectedModel.dart';
@@ -196,8 +194,13 @@ class HomePage extends GetView<HomePageController> {
                   ? DeviceCard(
                       model: model.allYatch[index],
                       onChange: (bool) {
-                        model.allYatch[index].changeDeviceStatus(bool);
+                        model.allYatch[index].controlDevice(bool);
                         model.allYatch[index].pushDeviceStatus();
+                      },
+                      changeAutoStatus: (bool) {
+                        model.allYatch[index].isAuto =
+                            !model.allYatch[index].isAuto;
+                       model.allYatch[index].pushDeviceStatus();
                       },
                     )
                   : Container(

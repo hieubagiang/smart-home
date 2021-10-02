@@ -1,12 +1,7 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
-import 'package:smart_home_mobile/app/common//helper/local_notification_helper.dart';
-import 'package:smart_home_mobile/app/common//utils/functions.dart';
 
 class MQTTHelper {
   final client = MqttServerClient('broker.hivemq.com', '123123');

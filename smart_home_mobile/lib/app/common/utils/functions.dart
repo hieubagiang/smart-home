@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
-import 'package:smart_home_mobile/app/presentation/utils/strings.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
+import 'package:smart_home_mobile/app/common/utils/strings.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class FunctionUtils {
   /// Common Function

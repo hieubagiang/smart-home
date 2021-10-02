@@ -6,8 +6,8 @@ import 'package:smart_home_mobile/app/common/utils/functions.dart';
 import 'package:smart_home_mobile/app/common//helper/storage_helper.dart';
 import 'package:smart_home_mobile/app/domain/repositories/repositories.dart';
 import 'package:smart_home_mobile/app/presentation/routes/app_pages.dart';
-import 'package:smart_home_mobile/app/presentation/utils/constants.dart';
-import 'package:smart_home_mobile/app/presentation/utils/strings.dart';
+import 'package:smart_home_mobile/app/common/constants/constants.dart';
+import 'package:smart_home_mobile/app/common/utils/strings.dart';
 
 import 'base_common_widgets.dart';
 import 'widget_state.dart';

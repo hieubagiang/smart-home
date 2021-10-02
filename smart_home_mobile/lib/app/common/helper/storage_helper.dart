@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
 import 'package:smart_home_mobile/app/data/models/response/login/login_response.dart';
-import 'package:smart_home_mobile/app/presentation/utils/constants.dart';
+import 'package:smart_home_mobile/app/common/constants/constants.dart';
 
 class StorageHelper {
   static GetStorage box = GetStorage();

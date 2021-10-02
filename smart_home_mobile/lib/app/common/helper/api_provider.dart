@@ -9,8 +9,8 @@ import 'package:http_parser/http_parser.dart';
 import 'package:mime/mime.dart';
 import 'package:smart_home_mobile/app/common//extension/file_extension.dart';
 import 'package:smart_home_mobile/app/data/models/base/base_response.dart';
-import 'package:smart_home_mobile/app/presentation/utils/constants.dart';
-import 'package:smart_home_mobile/app/presentation/utils/strings.dart';
+import 'package:smart_home_mobile/app/common/constants/constants.dart';
+import 'package:smart_home_mobile/app/common/utils/strings.dart';
 import 'package:smart_home_mobile/env.dart';
 
 import 'pretty_dio_logger.dart';

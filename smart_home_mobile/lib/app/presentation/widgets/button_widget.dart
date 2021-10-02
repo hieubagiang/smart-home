@@ -6,9 +6,7 @@
  */
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
-
-import '../utils/space.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class ButtonWidget extends StatelessWidget {
   final Color color;

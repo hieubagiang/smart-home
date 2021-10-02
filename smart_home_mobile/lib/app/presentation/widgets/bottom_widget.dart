@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/presentation/utils/utils.dart';
+import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
 class BottomWidget extends StatelessWidget {
   final Function() onClickChat;

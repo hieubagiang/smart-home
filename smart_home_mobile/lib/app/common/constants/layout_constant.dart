@@ -28,6 +28,7 @@ class HeightUtils {
   static final double heightSettingItem = 400.h;
   static final double heightLine = 1.h;
   static final double heightLineMedium = 2.h;
+  static final double heightButtonSmall = 40.0.h;
   static final double heightButtonMedium = 60.0.h;
   static final double heightButtonLarge = 80.0.h;
   static final double heightGroupImageThumbnail = 84.w;
