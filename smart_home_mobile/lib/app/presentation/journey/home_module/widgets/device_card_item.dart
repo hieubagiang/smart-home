@@ -83,8 +83,6 @@ class _DeviceCardState extends State<DeviceCard> {
                 activeColor: Color(0xff457be4),
                 disabled: model.isAuto,
                 onToggle: (val) {
-                  FunctionUtils.showSnackBar(
-                      'Cảnh báo', 'Độ ẩm tưới tiêu vượt mức 85%');
                   widget.onChange?.call((val));
                   setState(() {});
                 }),

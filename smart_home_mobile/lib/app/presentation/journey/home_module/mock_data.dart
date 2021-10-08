@@ -14,9 +14,9 @@ class MockData {
         Device(
             title: 'Quạt',
             leftIcon: FontAwesomeIcons.fan,
-            isEnable: true,
-            isAuto: false,
-            topic: ''),
+            isEnable: false,
+            isAuto: true,
+            topic: 'smarthome/cooling'),
       ];
 
   static List<Device> get devicesOfBedRoom => <Device>[
