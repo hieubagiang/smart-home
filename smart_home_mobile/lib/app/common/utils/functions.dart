@@ -1,8 +1,10 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_home_mobile/app/common/utils/strings.dart';
 import 'package:smart_home_mobile/app/common/utils/utils.dart';
@@ -81,4 +83,18 @@ class FunctionUtils {
         textColor: ColorUtils.whiteColor,
         fontSize: FontSizeUtils.toastFontSize);
   }
+
+  static void showSnackBar(String title, String message) {
+    Get.snackbar(title, message,
+        backgroundColor: ColorUtils.whiteColor,
+        boxShadows: [
+          BoxShadow(
+            color: ColorUtils.secondaryColor.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 6,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ]);
+  }
+
 }

@@ -1,27 +1,17 @@
-// class UserRepositoryImpl implements UserRepository {
-//   final UserRemoteDataSourece userRemoteDatasource;
-//   final UserLocalDataSource userLocalDataSource;
-//
-//   UserRepositoryImpl(this.userRemoteDatasource, this.userLocalDataSource);
-//
-//   @override
-//   Future createUser(UserEntity userEntity,String uid) async {
-//     final userModel = userEntity.toModel();
-//     await userRemoteDatasource.createUser(userModel,uid);
-//     await userLocalDataSource.saveUserInfo(userEntity);
-//   }
-//
-//   @override
-//   Future<UserEntity?> getUser(String uid) async {
-//     if (userLocalDataSource.hasUserInfo()) {
-//       return userLocalDataSource.getUser();
-//     }
-//     final user = await userRemoteDatasource.getUser(uid);
-//     if (user != null) {
-//       await userLocalDataSource.saveUserInfo(user);
-//     }
-//   }
-//
-//   @override
-//   User? getCurrentUser() => userRemoteDatasource.getCurrentUser();
-// }
+import 'package:smart_home_mobile/app/common/configs/configurations.dart';
+import 'package:smart_home_mobile/app/data/datasources/remote/user_api.dart';
+import 'package:smart_home_mobile/app/data/models/user_model/user_model.dart';
+import 'package:smart_home_mobile/app/domain/repositories/user_repository.dart';
+
+class UserRepositoryImpl implements UserRepository {
+  final UserApi userApi;
+
+  UserRepositoryImpl(this.userApi);
+  @override
+  Future<UserModel> getUserData(String accessToken) async {
+    String authorization = Configurations.getBearerAuth(accessToken);
+    final response = await userApi.getUserInfo(authorization);
+    return response;
+  }
+
+}

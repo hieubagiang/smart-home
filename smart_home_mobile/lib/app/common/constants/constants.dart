@@ -10,21 +10,9 @@ class ConstantsUtils {
   static const int IMAGE_LARGE_MAX_WIDTH = 1600;
   static const int IMAGE_SMALL_MAX_WIDTH = 400;
   static const int IMAGE_QUALITY = 80;
-
-  //PUSHER
-  static const String PUSHER_APP_ID = '1259568';
-  static const String PUSHER_KEY = '8927fe24a1bc34bef868';
-  static const String PUSHER_SECRET = '105672f926be52a86edf';
-  static const String PUSHER_CLUSTER = 'ap1';
-
   //LOGIN
-  static const int ID_PROTECTOR = 1; //1: 保護者
-  // static const int ID_SUB_PROTECTOR = 2; // 2: 招待者
-  static const int ID_STAFF = 3; //3: 職員
-  static const String USER_LOGIN_KEY = 'USER_LOGIN_KEY';
-  static const String LOGIN_TENANT_KEY = 'login_tenant';
-  static const String LOGIN_ID_KEY = 'login_id';
-  static const String LOGIN_TYPE_KEY = 'login_pwd';
+  static const String ACCESS_TOKEN_KEY = 'ACCESS_TOKEN_KEY';
+  static const String LOGIN_ID_KEY = 'LOGIN_ID';
 
   //Dashboard
   static const String AUTO_WEB_KEY = 'auto_webview';
@@ -59,6 +47,9 @@ class ConstantsUtils {
   static const String GROUP_TAG_HISTORY = 'GROUP_TAG_HISTORY';
   static const String BASE_TAG_HISTORY = 'BASE_TAG_HISTORY';
   static const double MAX_DROPDOWN_SUGGESTION_LENGTH = 2;
+
+  static const DEGREE_C = '\u2103';
+  static const PERCENT = '%';
 }
 
 class ApiConstant {

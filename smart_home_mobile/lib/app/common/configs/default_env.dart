@@ -3,14 +3,14 @@ import 'env.dart';
 
 class DefaultConfig extends EnvConfig {
   final _splashScreenSecondTimeOut = 2;
-  final _host = 'https://iphui-dev.acaziasoft.com/';
+  final _host = 'http://128.199.168.81:8089/';
   final _baseImageUrl = 'statics/';
-  final _productImageUrl = 'https://youngkids-dev.acaziasoft.com/statics/';
+  final _productImageUrl = 'host/';
   final _environment = 'dev';
   final _basicAuth = 'anonymous';
   final _bearerAuth = 'Bearer';
-  final _googleMapApiKey = 'AIzaSyDdM0cR-vVDPjT0rWs6HdHBfbokSOcRz6Q';
-  final _productHost = 'https://youngkids-dev.acaziasoft.com/v1/api/public/';
+  final _googleMapApiKey = '';
+  final _productHost = 'domain/v1/api/public/';
 
   @override
   String getBaseImageUrl() {
@@ -54,12 +54,12 @@ class DefaultConfig extends EnvConfig {
 
   @override
   String getDeepLinksAndroid() {
-    return 'https://football-applink.acaziasoft.com';
+    return 'deeplink';
   }
 
   @override
   String getDeepLinksIos() {
-    return 'app://football-applink.acaziasoft.com';
+    return 'deeplink';
   }
 
   @override
@@ -69,11 +69,11 @@ class DefaultConfig extends EnvConfig {
 
   @override
   String getAndroidAppId() {
-    return 'com.acaziasoft.phuiplus';
+    return 'com.smart.home';
   }
 
   @override
   String getIosAppId() {
-    return '1552416853';
+    return 'iosappid';
   }
 }

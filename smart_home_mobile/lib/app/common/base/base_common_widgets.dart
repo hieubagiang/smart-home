@@ -36,7 +36,7 @@ class BaseCommonWidgets implements _CommonWidgetsInterface {
 
   //EXAMPLE
   @override
-  void showDialogMessage(String message, Function? onClick) {
+  void showDialogMessage(String message, Function? onClick,{String? title}) {
     if (message.isEmpty) return;
     hideDialog();
     // set up the button
@@ -63,6 +63,7 @@ class BaseCommonWidgets implements _CommonWidgetsInterface {
           borderRadius: BorderRadius.circular(SpaceUtils.spaceMedium)),
       // change 40 to your desired radius
       child: CustomAlertDialog(
+        title: title,
         message: message,
         rightActionWidget: okButton,
       ),

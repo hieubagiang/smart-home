@@ -4,6 +4,8 @@ enum Pattern {
   hhmm,
   ddmmm,
   md,
+  ddMMyyyy,
+  ddMMyyyy_vi,
   ddMMMMyyyy,
   ddMMMMyyyyHHmm,
   yyyyMMddHHmm,
@@ -24,6 +26,8 @@ extension PatternExtension on Pattern {
         return 'dd MMM';
       case Pattern.md:
         return 'M/d';
+      case Pattern.ddMMyyyy:
+        return 'dd MM yyyy';
       case Pattern.ddMMMMyyyy:
         return 'dd MMMM yyyy';
       case Pattern.ddMMMMyyyyHHmm:
@@ -80,4 +84,15 @@ class DateTimeUtils {
             .inDays ==
         0;
   }
+
+  static String customGetStringDate(dynamic dateToConvert) {
+    if (dateToConvert is int) {
+      final datetime = getDateTime(dateToConvert);
+      return 'Ngày ${datetime.day} tháng ${datetime.month} năm ${datetime.year}';
+    } else if (dateToConvert is DateTime) {
+      return 'Ngày ${dateToConvert.day} tháng ${dateToConvert.month} năm ${dateToConvert.year}';
+    }
+    return '';
+  }
+
 }

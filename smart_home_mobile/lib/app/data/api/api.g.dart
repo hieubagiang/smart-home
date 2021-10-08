@@ -7,9 +7,7 @@ part of 'api.dart';
 // **************************************************************************
 
 class _RestClient implements RestClient {
-  _RestClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://newsapi.org/v2/';
-  }
+  _RestClient(this._dio, {this.baseUrl});
 
   final Dio _dio;
 

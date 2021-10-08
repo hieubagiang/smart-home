@@ -4,7 +4,7 @@ class ColorUtils {
   /// Common Colors
   static const Color primaryColor = Color(0xff42a5f5);
   static const Color secondaryColor = Color(0xFFECF3F9);
-  static const Color thirdColor = Color(0xFF90caf9);
+  static const Color thirdColor = Color(0xffa3a3a3);
   static const Color fourthColor = Color(0xFFe3f2fd);
 
   static const Color activeColor = Color(0xff80D321);

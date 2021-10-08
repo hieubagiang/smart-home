@@ -256,7 +256,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                             Padding(
                                 padding: EdgeInsets.only(
                                     top: 25, left: 15, right: 15),
-                                child: Textfields(
+                                child: TextFields(
                                     validate: nameValidator,
                                     controller: controllerFirstName,
                                     hintText: "First Name",
@@ -264,7 +264,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                             Padding(
                                 padding: EdgeInsets.only(
                                     top: 10, left: 15, right: 15),
-                                child: Textfields(
+                                child: TextFields(
                                     validate: nameValidator,
                                     controller: controllerLastName,
                                     hintText: "Last Name",
@@ -272,7 +272,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                             Padding(
                                 padding: EdgeInsets.only(
                                     top: 10, bottom: 10, left: 15, right: 15),
-                                child: Textfields(
+                                child: TextFields(
                                     validate: emailValidator,
                                     controller: controllerEmail,
                                     hintText: "Enter Email",
@@ -280,7 +280,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                             Padding(
                                 padding: EdgeInsets.only(
                                     bottom: 10.0, left: 15.0, right: 15.0),
-                                child: Textfields(
+                                child: TextFields(
                                   focusNode: focusNode,
                                   validate: passwordValidator,
                                   controller: controllerPassword,

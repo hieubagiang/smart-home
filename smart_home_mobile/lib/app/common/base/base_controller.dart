@@ -43,7 +43,7 @@ class BaseController extends GetxController
         WidgetState,
         ScreenState,
         FunctionUtils,
-        Repositories {
+        AppUseCase {
   final box = GetStorage();
   bool withScrollController = false;
   late ScrollController scrollController;
