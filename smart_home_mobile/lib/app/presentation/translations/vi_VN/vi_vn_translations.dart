@@ -17,5 +17,8 @@ final Map<String, String> viVn = {
   'off':'Tắt',
   'hi':'Xin chào',
   'logout':'Đăng xuất',
-  'logout_confirm_message':'Bạn có muốn đăng xuất không?'
+  'logout_confirm_message':'Bạn có muốn đăng xuất không?',
+  'connect_status':'Trạng thái kết nối',
+  'connected_message':'Đã kết nối',
+  'disconnected_message':'Đã ngắt kết nối'
 };

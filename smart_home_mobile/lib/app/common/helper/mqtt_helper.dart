@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:get/get.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
+import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
+import 'package:smart_home_mobile/app/common/utils/functions.dart';
 
 class MQTTHelper {
   final client = MqttServerClient('broker.hivemq.com', '123123');
@@ -15,9 +18,12 @@ class MQTTHelper {
     return _singleton;
   }
 
+  static String uniqueId = '';
+
   MQTTHelper._internal();
 
   Future initialize({Function(String)? handleNotificationTap}) async {
+    uniqueId = await FunctionUtils.getUniqueDeviceId();
     client.logging(on: false);
     client.keepAlivePeriod = 3600;
     client.onDisconnected = onDisconnected;
@@ -50,7 +56,7 @@ class MQTTHelper {
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
       final recMess = c![0].payload as MqttPublishMessage;
       final pt =
-          MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
+      MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
 
       /// The above may seem a little convoluted for users only interested in the
       /// payload, some users however may be interested in the received publish message,
@@ -82,6 +88,9 @@ class MQTTHelper {
   }
 
   void onConnected() {
+    FunctionUtils.showSnackBar('connect_status'.tr, 'connected_message'.tr,
+        colorText: ColorUtils.whiteColor,
+        backgroundColor: ColorUtils.activeColor);
     print('Client connection was successful');
   }
 
@@ -95,11 +104,13 @@ class MQTTHelper {
         MqttDisconnectionOrigin.solicited) {
       print('EXAMPLE::OnDisconnected callback is solicited, this is correct');
     }
-    initialize();
+    FunctionUtils.showSnackBar('connect_status'.tr, 'disconnected_message'.tr,
+        colorText: ColorUtils.whiteColor,
+        backgroundColor: ColorUtils.redNotiColor);
   }
 
   final connMess = MqttConnectMessage()
-      .withClientIdentifier('Mqtt_MyClientUniqueId')
+      .withClientIdentifier(uniqueId)
       .withWillTopic('willtopic') // If you set this you must set a will message
       .withWillMessage('My Will message')
       .startClean() // Non persistent session for testing

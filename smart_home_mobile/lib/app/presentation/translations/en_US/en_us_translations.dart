@@ -14,5 +14,8 @@ final Map<String, String> enUs = {
   'off':'Off',
   'hi':'Hi',
   'logout':'Logout',
-  'logout_confirm_message':'Are you sure want to logout?'
+  'logout_confirm_message':'Are you sure want to logout?',
+  'connect_status':'Connect Status',
+  'connected_message':'Connected',
+  'disconnected_message':'Disconnected'
 };

@@ -1,11 +1,14 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:device_info/device_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
 import 'package:smart_home_mobile/app/common/utils/strings.dart';
 import 'package:smart_home_mobile/app/common/utils/utils.dart';
 
@@ -84,9 +87,10 @@ class FunctionUtils {
         fontSize: FontSizeUtils.toastFontSize);
   }
 
-  static void showSnackBar(String title, String message) {
+  static void showSnackBar(String title, String message,{Color? backgroundColor,Color? colorText}) {
     Get.snackbar(title, message,
-        backgroundColor: ColorUtils.whiteColor,
+        backgroundColor: backgroundColor??ColorUtils.whiteColor,
+        colorText: colorText??ColorUtils.blackColor,
         boxShadows: [
           BoxShadow(
             color: ColorUtils.secondaryColor.withOpacity(0.2),
@@ -102,5 +106,28 @@ class FunctionUtils {
       return false;
     }
     return double.tryParse(s) != null;
+  }
+
+  static Future<String> getDeviceDetails() async {
+    String identifier = "";
+    final DeviceInfoPlugin deviceInfoPlugin = new DeviceInfoPlugin();
+    try {
+      if (Platform.isAndroid) {
+        var build = await deviceInfoPlugin.androidInfo;
+        identifier = build.androidId; //UUID for Android
+      } else if (Platform.isIOS) {
+        var data = await deviceInfoPlugin.iosInfo;
+        identifier = data.identifierForVendor; //UUID for iOS
+      }
+    } on PlatformException {
+      print('Failed to get platform version');
+    }
+    return identifier;
+  }
+  static Future<String> getUniqueDeviceId() async {
+    String id='';
+    final email = await StorageHelper.getLoginId();
+    id = '$email' + '_' + '${getDeviceDetails()}';
+    return id;
   }
 }

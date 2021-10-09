@@ -8,18 +8,14 @@ class Device {
   String? id;
   String? title;
   String? subtitle;
-  dynamic leftIcon;
-  IconData? topRightIcon;
-  IconData? bottomRightIcon;
+  dynamic icon;
   bool isEnable;
   String? topic;
   bool isAuto;
 
   Device({this.title,
     this.subtitle,
-    this.leftIcon,
-    this.topRightIcon,
-    this.bottomRightIcon,
+    this.icon,
     this.isEnable = false,
     this.id,
     this.isAuto = true,
@@ -41,21 +37,23 @@ class Device {
     if (value is String) {
       value = num.tryParse(value);
     }
-    log('${this.title} will set status = $value \n ${toString()}');
-    if (value == 0) {
-      isEnable = false;
-      this.isAuto = true;
-    } else if (value == 1) {
-      isEnable = true;
-      this.isAuto = true;
-    } else if (value == 2) {
-      isEnable = false;
-      this.isAuto = false;
-    } else if (value == 3) {
-      isEnable = true;
-      this.isAuto = false;
+    if(value!=null) {
+      log('${this.title} will set status = $value \n ${toString()}');
+      if (value == 0) {
+        isEnable = false;
+        this.isAuto = true;
+      } else if (value == 1) {
+        isEnable = true;
+        this.isAuto = true;
+      } else if (value == 2) {
+        isEnable = false;
+        this.isAuto = false;
+      } else if (value == 3) {
+        isEnable = true;
+        this.isAuto = false;
+      }
+      log('changed value \n= ${toString()}');
     }
-    log('changed value \n= ${toString()}');
   }
 
   void pushDeviceStatus() {
@@ -69,8 +67,6 @@ class Device {
 
   @override
   String toString() {
-    return 'Device{id: $id, title: $title, subtitle: $subtitle, leftIcon: $leftIcon, topRightIcon: $topRightIcon, bottomRightIcon: $bottomRightIcon, isEnable: $isEnable, topic: $topic, isAuto: $isAuto}';
+    return 'Device{id: $id, title: $title, subtitle: $subtitle, leftIcon: $icon, isEnable: $isEnable, topic: $topic, isAuto: $isAuto}';
   }
-
-
 }

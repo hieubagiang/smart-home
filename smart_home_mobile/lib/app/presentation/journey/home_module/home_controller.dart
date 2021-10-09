@@ -54,7 +54,6 @@ class HomeController extends BaseController {
   Future<void> onInit() async {
     super.onInit();
     //connectAndListen();
-    initData();
     MQTTHelper().onReceiveMessage = (mqttReceivedMessage) {
       final recMess = mqttReceivedMessage.payload as MqttPublishMessage;
       final payLoad =
@@ -75,16 +74,24 @@ class HomeController extends BaseController {
         humidity.value = payLoad;
       }
     };
-
 //connectAndListen();
   }
 
+  void onReady(){
+    super.onReady();
+    initData();
+
+  }
   void connectAndListen() {
   }
 
   Future<void> initData() async {
-    homeUseCase.getUserData().then((value) => {userData.value = value});
+    showLoadingDialog();
+    userData.value = await homeUseCase.getUserData();
+    hideDialog();
+
     await MQTTHelper().initialize();
+
     MQTTHelper().subscribeToTopic('smarthome/led');
     MQTTHelper().subscribeToTopic('smarthome/watertree');
     MQTTHelper().subscribeToTopic('smarthome/humidity');

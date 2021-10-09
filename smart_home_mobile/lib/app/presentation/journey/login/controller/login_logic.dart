@@ -49,7 +49,7 @@ class LoginController extends BaseController {
     //     errorText: 'Password must have at least one special character')
   ]);
 
-  Future<void> onReady() async {
+  Future<void> onReady  () async {
     controllerEmail.text = await useCase.getSavedLoginId()??'';
   }
 

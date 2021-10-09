@@ -60,14 +60,14 @@ class _DeviceCardState extends State<DeviceCard> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            model.leftIcon is String
+            model.icon is String
                 ? Image.asset(
               IconConstants.waterHeaterIcon,
               color: ColorUtils.whiteColor,
               height: HeightUtils.iconSizeLarge,
               width: HeightUtils.iconSizeLarge,
             )
-                : Icon(model.leftIcon,
+                : Icon(model.icon,
                 color: model.isEnable ? Colors.white : Color(0xffa3a3a3)),
             FlutterSwitch(
                 width: 60.w,
