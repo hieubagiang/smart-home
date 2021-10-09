@@ -1,6 +1,4 @@
-import 'package:retrofit/http.dart';
 import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
-import 'package:smart_home_mobile/app/common/network/http/dio_config.dart';
 import 'package:smart_home_mobile/app/domain/entities/room_entity/room_entity.dart';
 import 'package:smart_home_mobile/app/domain/entities/user_entity/user_entity.dart';
 import 'package:smart_home_mobile/app/domain/repositories/room_repository.dart';
@@ -30,5 +28,11 @@ class HomeUseCaseImpl extends HomeUseCase {
     listModel.forEach((element) => {list.add(RoomEntity.parseModel(element))});
     print(list);*/
     return list;
+  }
+
+  @override
+  Future<void> initMqtt() {
+    // TODO: implement initMqtt
+    throw UnimplementedError();
   }
 }

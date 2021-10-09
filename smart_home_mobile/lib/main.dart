@@ -6,7 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
-import 'package:smart_home_mobile/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
 import 'package:smart_home_mobile/app/data/models/authentication/login_model.dart';
 import 'package:smart_home_mobile/app/presentation/journey/app/app_binding.dart';
@@ -15,7 +14,6 @@ import 'package:smart_home_mobile/app/presentation/translations/translation.dart
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await MQTTHelper().initialize();
   await GetStorage.init(); //Init Storage
   LoginModel? data = await StorageHelper.getDataUser();
   print(data);

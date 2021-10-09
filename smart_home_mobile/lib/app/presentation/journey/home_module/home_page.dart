@@ -9,14 +9,12 @@ import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
 import 'package:smart_home_mobile/app/common/constants/constants.dart';
 import 'package:smart_home_mobile/app/common/constants/icon_constants.dart';
 import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
-import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
 import 'package:smart_home_mobile/app/common/utils/date_time.dart';
 import 'package:smart_home_mobile/app/common/utils/styles.dart';
 import 'package:smart_home_mobile/app/data/enum/room_enum.dart';
 import 'package:smart_home_mobile/app/domain/entities/Device.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/home_controller.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/widgets/device_card_item.dart';
-import 'package:smart_home_mobile/app/presentation/routes/app_pages.dart';
 
 import 'mock_data.dart';
 
@@ -30,9 +28,9 @@ class HomePage extends BaseView<HomeController> {
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.only(
               top: MediaQuery.of(context).padding.top + 50.h,
-              bottom: 30.h,
-              left: 30.w,
-              right: 30.w),
+              bottom: 16.h,
+              left: 16.w,
+              right: 16.w),
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -135,8 +133,7 @@ class HomePage extends BaseView<HomeController> {
                       color: Colors.orange,
                     )),
                 onTap: () {
-                  Get.offNamed(Routes.LOGIN);
-                  StorageHelper.clearUserLogin();
+                  controller.onTapLogout();
                 },
               )
             ],
@@ -151,52 +148,56 @@ class HomePage extends BaseView<HomeController> {
   }
 
   Widget _buildWeatherStats() {
-    return Container(
-      child: Row(
+    return Obx(() {
+      return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStatic(
-              FaIcon(
-                FontAwesomeIcons.thermometerQuarter,
-                color: ColorUtils.whiteColor,
-                size: HeightUtils.iconSizeLarge,
-              ),
-              '24${ConstantsUtils.DEGREE_C}'),
-          _buildStatic(
-              Image.asset(
-                IconConstants.hygrometerIcon,
-                color: ColorUtils.whiteColor,
-                height: HeightUtils.iconSizeLarge+8.w,
-                width: HeightUtils.iconSizeLarge+8.w,
-              ),
-              '86${ConstantsUtils.PERCENT}'),
+          Expanded(
+            child: _buildStatic(
+                FaIcon(
+                  FontAwesomeIcons.thermometerQuarter,
+                  color: ColorUtils.whiteColor,
+                  size: HeightUtils.iconSizeLarge,
+                ),
+                '${controller.temp.value}${ConstantsUtils.DEGREE_C}'),
+          ),
+          Expanded(
+            child: _buildStatic(
+                Image.asset(
+                  IconConstants.hygrometerIcon,
+                  color: ColorUtils.whiteColor,
+                  height: HeightUtils.iconSizeLarge + 8.w,
+                  width: HeightUtils.iconSizeLarge + 8.w,
+                ),
+                '${controller.humidity.value}${ConstantsUtils.PERCENT}'),
+          ),
         ],
-      ),
-    );
+      );
+    });
   }
 
   Row _buildStatic(Widget prefixIcon, String value) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
-          width: 140.w,
-          padding: EdgeInsets.symmetric(horizontal: SpaceUtils.spaceSmall),
-          alignment: Alignment.center,
-          child: Row(
-            children: [
-              prefixIcon,
-              SizedBox(
-                width: SpaceUtils.spaceSmall,
-              ),
-              Expanded(
-                child: Text(
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: SpaceUtils.spaceSmall),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                prefixIcon,
+                SizedBox(
+                  width: SpaceUtils.spaceSmall,
+                ),
+                Text(
                   value,
                   style: StyleUtils.style18Bold.copyWith(
                       fontSize: 36.sp, color: ColorUtils.secondaryColor),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

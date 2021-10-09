@@ -12,5 +12,7 @@ final Map<String, String> enUs = {
   'auto':'Auto',
   'on':'On',
   'off':'Off',
-  'hi':'Hi'
+  'hi':'Hi',
+  'logout':'Logout',
+  'logout_confirm_message':'Are you sure want to logout?'
 };

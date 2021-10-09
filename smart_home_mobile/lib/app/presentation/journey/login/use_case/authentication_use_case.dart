@@ -3,4 +3,6 @@ import 'package:smart_home_mobile/app/domain/requests/login_request.dart';
 
 abstract class LoginUseCase {
   Future<LoginEntity> login(LoginRequest request);
+  Future<String?> getSavedLoginId();
+  Future<void> saveLoginId(String loginId);
 }

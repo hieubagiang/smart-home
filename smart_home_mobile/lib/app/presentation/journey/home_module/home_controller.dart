@@ -3,13 +3,14 @@ import 'package:mqtt_client/mqtt_client.dart';
 import 'package:smart_home_mobile/app/common/base/base_controller.dart';
 import 'package:smart_home_mobile/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home_mobile/app/common/helper/socket_io_helper.dart';
+import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
 import 'package:smart_home_mobile/app/domain/entities/device_entity/device_entity.dart';
 import 'package:smart_home_mobile/app/domain/entities/room_entity/room_entity.dart';
 import 'package:smart_home_mobile/app/domain/entities/user_entity/user_entity.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/mock_data.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/use_case/home_use_case.dart';
 import 'package:smart_home_mobile/app/presentation/journey/home_module/use_case/impl/home_use_case_impl.dart';
-import 'package:web_socket_channel/io.dart';
+import 'package:smart_home_mobile/app/presentation/routes/app_pages.dart';
 
 class HomeController extends BaseController {
   final HomeUseCase homeUseCase = Get.find<HomeUseCaseImpl>();
@@ -18,6 +19,8 @@ class HomeController extends BaseController {
   set obj(value) => _obj.value = value;
 
   get obj => _obj.value;
+  RxString temp = RxString('0');
+  RxString humidity = RxString('100');
   RxList<RoomEntity> roomList = RxList([
     RoomEntity(
         id: 5,
@@ -52,7 +55,6 @@ class HomeController extends BaseController {
     super.onInit();
     //connectAndListen();
     initData();
-
     MQTTHelper().onReceiveMessage = (mqttReceivedMessage) {
       final recMess = mqttReceivedMessage.payload as MqttPublishMessage;
       final payLoad =
@@ -63,34 +65,40 @@ class HomeController extends BaseController {
         this.roomList.forEach((roomEntity) {
           roomEntity.changeDeviceStatus(mqttReceivedMessage.topic, payLoad);
         });
+        roomList.refresh();
+      }
+      if (mqttReceivedMessage.topic == 'smarthome/temp') {
+        temp.value = payLoad;
+      }
+
+      if (mqttReceivedMessage.topic == 'smarthome/temp') {
+        humidity.value = payLoad;
       }
     };
-    //connectAndListen();
+
+//connectAndListen();
   }
 
   void connectAndListen() {
-    /*  IO.Socket socket = IO.io('http://128.199.168.81:8089',
-          OptionBuilder().setTransports(['websocket']).build());
-    socket.onConnect((_) {
-      print('socket connected');
-    });
-    socket.on('2', (data) => (){
-      //streamSocket.addResponse(data);
-      print('socket receive: $data');
-    } );
-    socket.onDisconnect((_) => print('disconnect'));*/
-
-    var channel =
-        IOWebSocketChannel.connect(Uri.parse('ws://broker.hivemq.com:8000'));
-
-    channel.stream.listen((message) {
-      print('message = $message}');
-    });
   }
 
   Future<void> initData() async {
     homeUseCase.getUserData().then((value) => {userData.value = value});
+    await MQTTHelper().initialize();
+    MQTTHelper().subscribeToTopic('smarthome/led');
+    MQTTHelper().subscribeToTopic('smarthome/watertree');
+    MQTTHelper().subscribeToTopic('smarthome/humidity');
+    MQTTHelper().subscribeToTopic('smarthome/temp');
+    MQTTHelper().subscribeToTopic('smarthome/cooling');
     //await homeUseCase.getRoomList();
     //print('$roomList');
+  }
+
+  void onTapLogout() {
+    showConfirmDialog(title: 'logout'.tr,message: 'logout_confirm_message'.tr, onConfirm: (){
+      Get.offNamed(Routes.LOGIN);
+      StorageHelper.clearUserLogin();
+      MQTTHelper().client.disconnect();
+    });
   }
 }

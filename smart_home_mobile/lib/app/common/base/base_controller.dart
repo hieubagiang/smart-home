@@ -98,7 +98,7 @@ class BaseController extends GetxController
   @override
   void onTokenExpired(String code, String message) {
     super.onTokenExpired(code, message);
-    showDialogMessage(StringUtils.getMessageErrorFromServer(message, code), () {
+    showDialogMessage(message:StringUtils.getMessageErrorFromServer(message, code), onClick: () {
       logOut();
     });
   }
@@ -107,7 +107,7 @@ class BaseController extends GetxController
   void onErrorNetwork(String code, String message) {
     super.onErrorNetwork(code, message);
     showDialogMessage(
-        StringUtils.getMessageErrorFromServer(message, code), null);
+        message: StringUtils.getMessageErrorFromServer(message, code));
   }
 
   Future<void> logOut() async {

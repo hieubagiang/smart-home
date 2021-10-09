@@ -43,12 +43,15 @@ class LoginController extends BaseController {
   ]);
   final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'password_is_required'.tr),
-    MinLengthValidator(8, errorText: 'password_must_be_at_least_8_digits_long'.tr),
+    MinLengthValidator(
+        8, errorText: 'password_must_be_at_least_8_digits_long'.tr),
     // PatternValidator(r'(?=.*?[#?!@$%^&*-])',
     //     errorText: 'Password must have at least one special character')
   ]);
 
-  void onLogin() {}
+  Future<void> onReady() async {
+    controllerEmail.text = await useCase.getSavedLoginId()??'';
+  }
 
   Future<void> onTap() async {
     if (validateAndSave) {
@@ -57,14 +60,16 @@ class LoginController extends BaseController {
       email = controllerEmail.text;
       password = controllerPassword.text;
       this.visible.value = !this.visible.value;
-    //Get.offAndToNamed(Routes.HOME_PAGE);
-    LoginRequest request = LoginRequest(
-        email: controllerEmail.text, password: controllerPassword.text);
-    showLoadingDialog();
-    LoginEntity loginEntity = await useCase.login(request);
-    hideDialog();
-    StorageHelper.setDataUser(loginEntity.toModel());
-    Get.offAndToNamed(Routes.HOME_PAGE);
+      //Get.offAndToNamed(Routes.HOME_PAGE);
+      LoginRequest request = LoginRequest(
+          email: controllerEmail.text, password: controllerPassword.text);
+      showLoadingDialog();
+      LoginEntity loginEntity = await useCase.login(request);
+      hideDialog();
+      StorageHelper.setDataUser(loginEntity.toModel());
+      StorageHelper.setLoginId(controllerEmail.text);
+
+      Get.offAndToNamed(Routes.HOME_PAGE);
   }
   }
 

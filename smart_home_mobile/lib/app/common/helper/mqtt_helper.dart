@@ -8,9 +8,9 @@ class MQTTHelper {
 
   Function(String)? handleNotificationTap;
   String? _payLoad;
-  static final MQTTHelper _singleton =
-      MQTTHelper._internal();
+  static final MQTTHelper _singleton = MQTTHelper._internal();
   Function(MqttReceivedMessage<MqttMessage?>)? onReceiveMessage;
+
   factory MQTTHelper() {
     return _singleton;
   }
@@ -19,12 +19,10 @@ class MQTTHelper {
 
   Future initialize({Function(String)? handleNotificationTap}) async {
     client.logging(on: false);
-    client.keepAlivePeriod = 20;
-
+    client.keepAlivePeriod = 3600;
     client.onDisconnected = onDisconnected;
     client.onConnected = onConnected;
     client.onSubscribed = onSubscribed;
-
 
     print('MQTT client connecting....');
     client.connectionMessage = connMess;
@@ -38,6 +36,7 @@ class MQTTHelper {
       print('EXAMPLE::socket exception - $e');
       client.disconnect();
     }
+
     /// Check we are connected
     if (client.connectionStatus!.state == MqttConnectionState.connected) {
       print('MQTT client connected');
@@ -46,15 +45,12 @@ class MQTTHelper {
       print(
           'EXAMPLE::ERROR Mosquitto client connection failed - disconnecting, status is ${client.connectionStatus}');
       client.disconnect();
-      exit(-1);
-
     }
-
 
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
       final recMess = c![0].payload as MqttPublishMessage;
       final pt =
-      MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
+          MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
 
       /// The above may seem a little convoluted for users only interested in the
       /// payload, some users however may be interested in the received publish message,
@@ -62,8 +58,8 @@ class MQTTHelper {
       /// for a while.
       /// The payload is a byte buffer, this will be specific to the topic
       print(
-          'EXAMPLE::Change notification:: topic is <${c[0].topic}>, payload is <-- $pt -->');
-        onReceiveMessage?.call(c[0]);
+          'Message Receive: topic is <${c[0].topic}>, payload is <-- $pt -->');
+      onReceiveMessage?.call(c[0]);
     });
   }
 
@@ -75,40 +71,38 @@ class MQTTHelper {
 
   Future<void> subscribeToTopic(String topic) async {
     print('EXAMPLE::Subscribing to the $topic');
-    client.subscribe(topic, MqttQos.atMostOnce);  }
-  Future<void> publishToTopic(String topic,String message) async {
-    /// Lets publish to our topic
-    /// Use the payload builder rather than a raw buffer
-    /// Our known topic to publish to
+    client.subscribe(topic, MqttQos.atMostOnce);
+  }
+
+  Future<void> publishToTopic(String topic, String message) async {
     final builder = MqttClientPayloadBuilder();
     builder.addString(message);
-
-    /// Publish it
-    print('EXAMPLE::Publishing our topic $topic ==> $message');
+    print('Publishing our topic $topic ==> $message');
     client.publishMessage(topic, MqttQos.exactlyOnce, builder.payload!);
   }
+
   void onConnected() {
-    print(
-        'EXAMPLE::OnConnected client callback - Client connection was sucessful');
+    print('Client connection was successful');
   }
 
   void onSubscribed(String topic) {
     print('EXAMPLE::Subscription confirmed for topic $topic');
   }
+
   void onDisconnected() {
     print('EXAMPLE::OnDisconnected client callback - Client disconnection');
     if (client.connectionStatus!.disconnectionOrigin ==
         MqttDisconnectionOrigin.solicited) {
       print('EXAMPLE::OnDisconnected callback is solicited, this is correct');
     }
-    exit(-1);
+    initialize();
   }
+
   final connMess = MqttConnectMessage()
       .withClientIdentifier('Mqtt_MyClientUniqueId')
       .withWillTopic('willtopic') // If you set this you must set a will message
       .withWillMessage('My Will message')
       .startClean() // Non persistent session for testing
       .withWillQos(MqttQos.atLeastOnce);
-
 }
 

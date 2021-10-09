@@ -15,5 +15,7 @@ final Map<String, String> viVn = {
   'auto':'Tự động',
   'on':'Bật',
   'off':'Tắt',
-  'hi':'Xin chào'
+  'hi':'Xin chào',
+  'logout':'Đăng xuất',
+  'logout_confirm_message':'Bạn có muốn đăng xuất không?'
 };

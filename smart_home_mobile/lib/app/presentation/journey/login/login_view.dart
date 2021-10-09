@@ -29,7 +29,7 @@ class LoginPage extends BaseView<LoginController> {
               SizedBox(
                 height: SpaceUtils.spaceMedium,
               ),
-              _buildFooter(),
+              //_buildFooter(),
             ],
           ),
         ),

@@ -5,7 +5,6 @@ import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
 import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
 import 'package:smart_home_mobile/app/common/constants/icon_constants.dart';
 import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
-import 'package:smart_home_mobile/app/common/utils/functions.dart';
 import 'package:smart_home_mobile/app/domain/entities/Device.dart';
 
 class DeviceCard extends StatefulWidget {

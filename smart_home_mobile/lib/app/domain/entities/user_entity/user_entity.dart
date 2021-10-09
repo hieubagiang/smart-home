@@ -1,4 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:smart_home_mobile/app/data/models/user_model/user_model.dart';
 
 class UserEntity {

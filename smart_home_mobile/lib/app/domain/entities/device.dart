@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:smart_home_mobile/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home_mobile/app/common/utils/functions.dart';
@@ -13,16 +15,15 @@ class Device {
   String? topic;
   bool isAuto;
 
-  Device(
-      {this.title,
-      this.subtitle,
-      this.leftIcon,
-      this.topRightIcon,
-      this.bottomRightIcon,
-      this.isEnable = false,
-      this.id,
-      this.isAuto = true,
-      required this.topic});
+  Device({this.title,
+    this.subtitle,
+    this.leftIcon,
+    this.topRightIcon,
+    this.bottomRightIcon,
+    this.isEnable = false,
+    this.id,
+    this.isAuto = true,
+    required this.topic});
 
   void controlDevice(bool isEnable) {
     this.isEnable = isEnable;
@@ -37,7 +38,10 @@ class Device {
   }
 
   void setStatus(dynamic value) {
-
+    if (value is String) {
+      value = num.tryParse(value);
+    }
+    log('${this.title} will set status = $value \n ${toString()}');
     if (value == 0) {
       isEnable = false;
       this.isAuto = true;
@@ -51,6 +55,7 @@ class Device {
       isEnable = true;
       this.isAuto = false;
     }
+    log('changed value \n= ${toString()}');
   }
 
   void pushDeviceStatus() {

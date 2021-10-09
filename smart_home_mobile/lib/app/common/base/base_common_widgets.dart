@@ -36,7 +36,8 @@ class BaseCommonWidgets implements _CommonWidgetsInterface {
 
   //EXAMPLE
   @override
-  void showDialogMessage(String message, Function? onClick,{String? title}) {
+  void showDialogMessage(
+      {required String message, Function()? onClick, String? title}) {
     if (message.isEmpty) return;
     hideDialog();
     // set up the button
@@ -100,7 +101,8 @@ class BaseCommonWidgets implements _CommonWidgetsInterface {
   }
 
   @override
-  void showConfirmDialog(String message, Function onConfirm) {
+  void showConfirmDialog(
+      {String? title, String? message, Function()? onConfirm}) {
     Widget confirmWidget = TextButton(
       child: Text(
         "ok".tr.toUpperCase(),
@@ -109,7 +111,7 @@ class BaseCommonWidgets implements _CommonWidgetsInterface {
       ),
       onPressed: () {
         Get.back();
-        onConfirm();
+        onConfirm?.call();
       },
     );
     Widget cancelWidget = TextButton(
@@ -129,7 +131,8 @@ class BaseCommonWidgets implements _CommonWidgetsInterface {
           borderRadius: BorderRadius.circular(SpaceUtils.spaceMedium)),
       // change 40 to your desired radius
       child: CustomAlertDialog(
-        message: message,
+        message: message ?? '',
+        title: title ?? '',
         leftActionWidget: cancelWidget,
         rightActionWidget: confirmWidget,
       ),
@@ -155,9 +158,11 @@ abstract class _CommonWidgetsInterface {
 
   void hideDialog();
 
-  void showDialogMessage(String message, Function onClick);
+  void showDialogMessage(
+      {String? title, required String message, Function()? onClick});
 
-  void showConfirmDialog(String message, Function onConfirm);
+  void showConfirmDialog(
+      {String? title, String? message, Function()? onConfirm});
 
   void showBottomDialog();
 }

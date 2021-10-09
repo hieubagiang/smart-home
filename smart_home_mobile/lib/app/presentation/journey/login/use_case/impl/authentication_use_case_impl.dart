@@ -1,3 +1,4 @@
+import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
 import 'package:smart_home_mobile/app/domain/entities/authentication/login_entity.dart';
 import 'package:smart_home_mobile/app/domain/repositories/authentication_repository.dart';
 import 'package:smart_home_mobile/app/domain/requests/login_request.dart';
@@ -13,5 +14,15 @@ class LoginUseCaseImpl extends LoginUseCase {
     final response =
         await authenticationRepository.login(loginRequest: request);
     return LoginEntity.parseModel(response);
+  }
+
+  @override
+  Future<String?> getSavedLoginId() async {
+    return await StorageHelper.getLoginId() ?? "";
+  }
+
+  @override
+  Future<void> saveLoginId(String loginId) async {
+    await StorageHelper.setLoginId(loginId);
   }
 }

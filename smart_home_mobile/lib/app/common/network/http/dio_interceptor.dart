@@ -6,7 +6,8 @@ class DioInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler errorInterceptorHandler) {
     Get.put(BaseController()).showDialogMessage(
-        err.response?.data['message'] ?? 'some_thing_went_wrong'.tr, () {},title: 'error'.tr);
+        message: err.response?.data['message'] ?? 'some_thing_went_wrong'.tr,
+        title: 'error'.tr);
   }
 
   Future _handleRefreshToken(DioError err) async {
