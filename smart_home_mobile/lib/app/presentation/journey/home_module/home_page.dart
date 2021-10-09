@@ -129,7 +129,7 @@ class HomePage extends BaseView<HomeController> {
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     child: Icon(
-                      Icons.person,
+                      Icons.exit_to_app,
                       color: Colors.orange,
                     )),
                 onTap: () {
