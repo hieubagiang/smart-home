@@ -1,5 +1,5 @@
 
-import 'package:smart_home_mobile/app/common/configs/env.dart';
+import 'package:smart_home/app/common/configs/env.dart';
 
 
 class StageConfig extends EnvConfig {

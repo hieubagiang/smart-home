@@ -1,6 +1,6 @@
 // import 'package:json_annotation/json_annotation.dart';
 // import 'package:meta/meta.dart';
-// import 'package:smart_home_mobile/app/domain/entities/article.dart';
+// import 'package:smart_home/app/domain/entities/article.dart';
 //
 // part 'article_model.g.dart';
 //

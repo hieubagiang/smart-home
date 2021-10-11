@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
 
 
 class TextFields extends StatefulWidget {

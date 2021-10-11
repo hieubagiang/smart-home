@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:smart_home_mobile/app/common/utils/urls.dart';
-import 'package:smart_home_mobile/app/data/models/authentication/login_model.dart';
+import 'package:smart_home/app/common/utils/urls.dart';
+import 'package:smart_home/app/data/models/authentication/login_model.dart';
 
 part 'authentication_api.g.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
-import 'package:smart_home_mobile/app/common/constants/constants.dart';
-import 'package:smart_home_mobile/app/common/utils/functions.dart';
-import 'package:smart_home_mobile/app/data/models/authentication/login_model.dart';
+import 'package:smart_home/app/common/constants/constants.dart';
+import 'package:smart_home/app/common/utils/functions.dart';
+import 'package:smart_home/app/data/models/authentication/login_model.dart';
 
 class StorageHelper {
   static GetStorage box = GetStorage();

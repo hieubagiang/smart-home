@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smart_home_mobile/app/domain/entities/device_entity/device_entity.dart';
+import 'package:smart_home/app/domain/entities/device_entity/device_entity.dart';
 
 part 'device_model.g.dart';
 

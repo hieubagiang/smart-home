@@ -1,4 +1,4 @@
-# smart_home_mobile
+# smart_home
 flutter packages pub run build_runner build --delete-conflicting-outputs
 A new smart-home-mobile project.
 

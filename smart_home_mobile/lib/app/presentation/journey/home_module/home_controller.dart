@@ -1,16 +1,16 @@
 import 'package:get/get.dart';
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:smart_home_mobile/app/common/base/base_controller.dart';
-import 'package:smart_home_mobile/app/common/helper/mqtt_helper.dart';
-import 'package:smart_home_mobile/app/common/helper/socket_io_helper.dart';
-import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
-import 'package:smart_home_mobile/app/domain/entities/device_entity/device_entity.dart';
-import 'package:smart_home_mobile/app/domain/entities/room_entity/room_entity.dart';
-import 'package:smart_home_mobile/app/domain/entities/user_entity/user_entity.dart';
-import 'package:smart_home_mobile/app/presentation/journey/home_module/mock_data.dart';
-import 'package:smart_home_mobile/app/presentation/journey/home_module/use_case/home_use_case.dart';
-import 'package:smart_home_mobile/app/presentation/journey/home_module/use_case/impl/home_use_case_impl.dart';
-import 'package:smart_home_mobile/app/presentation/routes/app_pages.dart';
+import 'package:smart_home/app/common/base/base_controller.dart';
+import 'package:smart_home/app/common/helper/mqtt_helper.dart';
+import 'package:smart_home/app/common/helper/socket_io_helper.dart';
+import 'package:smart_home/app/common/helper/storage_helper.dart';
+import 'package:smart_home/app/domain/entities/device_entity/device_entity.dart';
+import 'package:smart_home/app/domain/entities/room_entity/room_entity.dart';
+import 'package:smart_home/app/domain/entities/user_entity/user_entity.dart';
+import 'package:smart_home/app/presentation/journey/home_module/mock_data.dart';
+import 'package:smart_home/app/presentation/journey/home_module/use_case/home_use_case.dart';
+import 'package:smart_home/app/presentation/journey/home_module/use_case/impl/home_use_case_impl.dart';
+import 'package:smart_home/app/presentation/routes/app_pages.dart';
 
 class HomeController extends BaseController {
   final HomeUseCase homeUseCase = Get.find<HomeUseCaseImpl>();

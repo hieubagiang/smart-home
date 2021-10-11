@@ -1,5 +1,5 @@
 //
-// import 'package:smart_home_mobile/app/common/utils/strings.dart';
+// import 'package:smart_home/app/common/utils/strings.dart';
 //
 // class Validate {
 //   static String? _validatePhone = r'0\d{8,}';

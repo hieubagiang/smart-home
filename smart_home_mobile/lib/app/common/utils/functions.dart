@@ -8,9 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
-import 'package:smart_home_mobile/app/common/utils/strings.dart';
-import 'package:smart_home_mobile/app/common/utils/utils.dart';
+import 'package:smart_home/app/common/helper/storage_helper.dart';
+import 'package:smart_home/app/common/utils/strings.dart';
+import 'package:smart_home/app/common/utils/utils.dart';
 
 class FunctionUtils {
   /// Common Function

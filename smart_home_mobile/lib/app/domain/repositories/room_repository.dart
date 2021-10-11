@@ -1,5 +1,5 @@
-import 'package:smart_home_mobile/app/data/models/room_model/room_model.dart';
-import 'package:smart_home_mobile/app/domain/requests/edit_device_request.dart';
+import 'package:smart_home/app/data/models/room_model/room_model.dart';
+import 'package:smart_home/app/domain/requests/edit_device_request.dart';
 
 abstract class RoomRepository {
   Future<List<RoomModel>> getRoom(String accessToken);

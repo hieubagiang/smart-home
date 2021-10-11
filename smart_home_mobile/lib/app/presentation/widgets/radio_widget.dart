@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
-import 'package:smart_home_mobile/app/common/utils/utils.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/utils/utils.dart';
 
 class RadioWiget extends StatelessWidget {
   const RadioWiget(

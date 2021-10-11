@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:smart_home_mobile/app/common/utils/utils.dart';
-import 'package:smart_home_mobile/app/presentation/widgets/empty_data_widget.dart';
+import 'package:smart_home/app/common/utils/utils.dart';
+import 'package:smart_home/app/presentation/widgets/empty_data_widget.dart';
 
 class ListViewWidget extends StatefulWidget {
   final IndexedWidgetBuilder itemBuilder;

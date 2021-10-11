@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
-import 'package:smart_home_mobile/app/common/utils/functions.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/utils/functions.dart';
 
 class MQTTHelper {
   final client = MqttServerClient('broker.hivemq.com', '123123');

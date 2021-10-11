@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "261934191224",
+    "project_id": "smart-home-1d42f",
+    "storage_bucket": "smart-home-1d42f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261934191224:android:0827e3b96551bc3da9138d",
+        "android_client_info": {
+          "package_name": "com.hieuit.smart_home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261934191224-g3n7fq7smdlajjmcdu7biisgg68plaok.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hieuit.smart_home",
+            "certificate_hash": "66bc715fe05b5e940b651290eb6e199d31ebd5f8"
+          }
+        },
+        {
+          "client_id": "261934191224-f967l5pa03ktrjh3l5igcosve9pi9k34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh6l1GYDn6XsHzHX0ZjWLNqUyxNT4hsLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261934191224-f967l5pa03ktrjh3l5igcosve9pi9k34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

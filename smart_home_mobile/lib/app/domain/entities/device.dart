@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
-import 'package:smart_home_mobile/app/common/helper/mqtt_helper.dart';
-import 'package:smart_home_mobile/app/common/utils/functions.dart';
+import 'package:smart_home/app/common/helper/mqtt_helper.dart';
+import 'package:smart_home/app/common/utils/functions.dart';
 
 class Device {
   String? id;

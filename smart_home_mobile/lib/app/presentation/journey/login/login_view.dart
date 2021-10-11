@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
-import 'package:smart_home_mobile/app/common/constants/image_constants.dart';
-import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
-import 'package:smart_home_mobile/app/common/utils/styles.dart';
-import 'package:smart_home_mobile/app/presentation/widgets/textfields.dart';
+import 'package:smart_home/app/common/base/base_view_view_model.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/constants/image_constants.dart';
+import 'package:smart_home/app/common/constants/layout_constant.dart';
+import 'package:smart_home/app/common/utils/styles.dart';
+import 'package:smart_home/app/presentation/widgets/textfields.dart';
 
 import 'controller/login_logic.dart';
 

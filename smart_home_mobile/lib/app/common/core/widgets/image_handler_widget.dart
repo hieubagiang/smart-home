@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home_mobile/app/common/assets/constans.dart';
+import 'package:smart_home/app/common/assets/constans.dart';
 import 'index.dart';
 
 class ImageHandlerWidget extends StatelessWidget {

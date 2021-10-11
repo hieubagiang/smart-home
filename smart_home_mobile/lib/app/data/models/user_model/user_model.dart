@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smart_home_mobile/app/domain/entities/user_entity/user_entity.dart';
+import 'package:smart_home/app/domain/entities/user_entity/user_entity.dart';
 
 part 'user_model.g.dart';
 

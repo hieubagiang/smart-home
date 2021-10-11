@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
+import 'package:smart_home/app/common/constants/layout_constant.dart';
 
 class EmptyDataWidget extends StatelessWidget {
   @override

@@ -4,17 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:scrollable_list_tabview/scrollable_list_tabview.dart';
-import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
-import 'package:smart_home_mobile/app/common/constants/constants.dart';
-import 'package:smart_home_mobile/app/common/constants/icon_constants.dart';
-import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
-import 'package:smart_home_mobile/app/common/utils/date_time.dart';
-import 'package:smart_home_mobile/app/common/utils/styles.dart';
-import 'package:smart_home_mobile/app/data/enum/room_enum.dart';
-import 'package:smart_home_mobile/app/domain/entities/Device.dart';
-import 'package:smart_home_mobile/app/presentation/journey/home_module/home_controller.dart';
-import 'package:smart_home_mobile/app/presentation/journey/home_module/widgets/device_card_item.dart';
+import 'package:smart_home/app/common/base/base_view_view_model.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/constants/constants.dart';
+import 'package:smart_home/app/common/constants/icon_constants.dart';
+import 'package:smart_home/app/common/constants/layout_constant.dart';
+import 'package:smart_home/app/common/utils/date_time.dart';
+import 'package:smart_home/app/common/utils/styles.dart';
+import 'package:smart_home/app/data/enum/room_enum.dart';
+import 'package:smart_home/app/domain/entities/Device.dart';
+import 'package:smart_home/app/presentation/journey/home_module/home_controller.dart';
+import 'package:smart_home/app/presentation/journey/home_module/widgets/device_card_item.dart';
 
 import 'mock_data.dart';
 

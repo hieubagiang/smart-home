@@ -1,8 +1,8 @@
-import 'package:smart_home_mobile/app/common/configs/configurations.dart';
-import 'package:smart_home_mobile/app/data/datasources/remote/room_api.dart';
-import 'package:smart_home_mobile/app/data/models/room_model/room_model.dart';
-import 'package:smart_home_mobile/app/domain/repositories/room_repository.dart';
-import 'package:smart_home_mobile/app/domain/requests/edit_device_request.dart';
+import 'package:smart_home/app/common/configs/configurations.dart';
+import 'package:smart_home/app/data/datasources/remote/room_api.dart';
+import 'package:smart_home/app/data/models/room_model/room_model.dart';
+import 'package:smart_home/app/domain/repositories/room_repository.dart';
+import 'package:smart_home/app/domain/requests/edit_device_request.dart';
 
 class RoomRepositoryImpl implements RoomRepository {
   final RoomApi roomApi;

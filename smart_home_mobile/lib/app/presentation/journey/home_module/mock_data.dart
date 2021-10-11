@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:smart_home_mobile/app/common/constants/icon_constants.dart';
-import 'package:smart_home_mobile/app/domain/entities/Device.dart';
+import 'package:smart_home/app/common/constants/icon_constants.dart';
+import 'package:smart_home/app/domain/entities/Device.dart';
 
 class MockData {
   static List<Device> get devicesOfLivingRoom => <Device>[

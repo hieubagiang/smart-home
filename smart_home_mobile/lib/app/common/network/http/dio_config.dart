@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:smart_home_mobile/app/common//configs/configurations.dart';
-import 'package:smart_home_mobile/app/common//helper/pretty_dio_logger.dart';
+import 'package:smart_home/app/common//configs/configurations.dart';
+import 'package:smart_home/app/common//helper/pretty_dio_logger.dart';
 
 import 'dio_interceptor.dart';
 final Dio dio = Dio(BaseOptions(

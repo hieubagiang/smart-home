@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
-import 'package:smart_home_mobile/app/presentation/routes/app_pages.dart';
-import 'package:smart_home_mobile/app/presentation/translations/translation.dart';
+import 'package:smart_home/app/common/base/base_view_view_model.dart';
+import 'package:smart_home/app/presentation/routes/app_pages.dart';
+import 'package:smart_home/app/presentation/translations/translation.dart';
 
 import 'app_logic.dart';
 

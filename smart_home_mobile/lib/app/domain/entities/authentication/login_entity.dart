@@ -1,4 +1,4 @@
-import 'package:smart_home_mobile/app/data/models/authentication/login_model.dart';
+import 'package:smart_home/app/data/models/authentication/login_model.dart';
 
 class LoginEntity {
   String accessToken;

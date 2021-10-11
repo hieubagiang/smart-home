@@ -1,5 +1,5 @@
-import 'package:smart_home_mobile/app/data/models/device_model/device_model.dart';
-import 'package:smart_home_mobile/app/domain/requests/edit_device_request.dart';
+import 'package:smart_home/app/data/models/device_model/device_model.dart';
+import 'package:smart_home/app/domain/requests/edit_device_request.dart';
 
 abstract class DeviceRepository {
   Future<List<DeviceModel>?> getDevice(String accessToken);

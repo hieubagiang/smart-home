@@ -1,8 +1,8 @@
-import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
-import 'package:smart_home_mobile/app/domain/entities/authentication/login_entity.dart';
-import 'package:smart_home_mobile/app/domain/repositories/authentication_repository.dart';
-import 'package:smart_home_mobile/app/domain/requests/login_request.dart';
-import 'package:smart_home_mobile/app/presentation/journey/login/use_case/authentication_use_case.dart';
+import 'package:smart_home/app/common/helper/storage_helper.dart';
+import 'package:smart_home/app/domain/entities/authentication/login_entity.dart';
+import 'package:smart_home/app/domain/repositories/authentication_repository.dart';
+import 'package:smart_home/app/domain/requests/login_request.dart';
+import 'package:smart_home/app/presentation/journey/login/use_case/authentication_use_case.dart';
 
 class LoginUseCaseImpl extends LoginUseCase {
   final AuthenticationRepository authenticationRepository;

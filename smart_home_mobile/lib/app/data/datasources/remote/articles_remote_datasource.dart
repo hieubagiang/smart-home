@@ -1,6 +1,6 @@
 // import 'package:meta/meta.dart';
 // import 'package:dio/dio.dart';
-// import 'package:smart_home_mobile/app/data/api/api.dart';
+// import 'package:smart_home/app/data/api/api.dart';
 //
 // const ERROR_MSG = 'Something went wrong';
 //

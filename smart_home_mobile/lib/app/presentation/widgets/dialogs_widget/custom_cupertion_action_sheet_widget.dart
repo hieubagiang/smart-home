@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/utils/styles.dart';
-import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
+import 'package:smart_home/app/common/utils/styles.dart';
+import 'package:smart_home/app/common/constants/layout_constant.dart';
 class CustomBottomDialog extends StatelessWidget {
   final String? title;
   final String? message;

@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/presentation/translations/vi_VN/vi_vn_translations.dart';
+import 'package:smart_home/app/presentation/translations/vi_VN/vi_vn_translations.dart';
 
 import 'en_US/en_us_translations.dart';
 

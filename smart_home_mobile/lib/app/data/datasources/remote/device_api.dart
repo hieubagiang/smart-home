@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:smart_home_mobile/app/common/configs/configurations.dart';
-import 'package:smart_home_mobile/app/common/utils/urls.dart';
-import 'package:smart_home_mobile/app/data/models/device_model/device_model.dart';
+import 'package:smart_home/app/common/configs/configurations.dart';
+import 'package:smart_home/app/common/utils/urls.dart';
+import 'package:smart_home/app/data/models/device_model/device_model.dart';
 
 part 'device_api.g.dart';
 

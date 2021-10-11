@@ -1,4 +1,4 @@
-package com.hieuit.smart_home_mobile
+package com.hieuit.smart_home
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-  -->
   <base href="/">
-
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new smart-home-mobile project.">
@@ -20,10 +9,10 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="smart_home_mobile">
+  <meta name="apple-mobile-web-app-title" content="smart_home">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <title>smart_home_mobile</title>
+  <title>Smart Home</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" type="text/css" href="splash/style.css">
 </head>
@@ -34,20 +23,20 @@
 <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-messaging.js"></script>
 <script>
-    <!--var firebaseConfig = {
-      apiKey: "AIzaSyChwIERGYiCCDC4e2jPh1HSyyqYUiUrMFM",
-      authDomain: "rikkeisoftproject.firebaseapp.com",
-      projectId: "rikkeisoftproject",
-      storageBucket: "rikkeisoftproject.appspot.com",
-      messagingSenderId: "480912687137",
-      appId: "1:480912687137:web:d9e1d670a7070af4d6a360",
-      measurementId: "G-KBQDD7LEDH"
-    };
+  var firebaseConfig = {
+    apiKey: "AIzaSyAL5ny2VfknzcdNnWwY8gP4OEsXxx820fU",
+    authDomain: "smart-home-1d42f.firebaseapp.com",
+    projectId: "smart-home-1d42f",
+    storageBucket: "smart-home-1d42f.appspot.com",
+    messagingSenderId: "261934191224",
+    appId: "1:261934191224:web:6116032758b99833a9138d",
+    measurementId: "G-TW5NZNJ9GY"
+  };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);-->
+    firebase.initializeApp(firebaseConfig);
 <!--    firebase.analytics();-->
-
-</script>
+  </script>
+<script src="main.dart.js" type="application/javascript"></script>
 <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
@@ -65,10 +54,13 @@
     if ('serviceWorker' in navigator) {
       // Service workers are supported. Use them.
       window.addEventListener('load', function () {
+        //register firebase-messaging service worker
+        navigator.serviceWorker.register("/firebase-messaging-sw.js");
         // Wait for registration to finish before dropping the <script> tag.
         // Otherwise, the browser will load the script multiple times,
         // potentially different versions.
         var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
+
         navigator.serviceWorker.register(serviceWorkerUrl)
           .then((reg) => {
             function waitForActivation(serviceWorker) {
@@ -117,5 +109,6 @@
     <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
     <img class="center" src="splash/img/light-1x.png" />
   </picture>
+
 </body>
 </html>

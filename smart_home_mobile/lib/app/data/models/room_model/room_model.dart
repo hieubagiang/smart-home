@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smart_home_mobile/app/domain/entities/Device.dart';
-import 'package:smart_home_mobile/app/domain/entities/room_entity/room_entity.dart';
+import 'package:smart_home/app/domain/entities/Device.dart';
+import 'package:smart_home/app/domain/entities/room_entity/room_entity.dart';
 
 part 'room_model.g.dart';
 

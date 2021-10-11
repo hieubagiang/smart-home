@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smart_home_mobile/app/data/models/base/base_data_response.dart';
-import 'package:smart_home_mobile/app/data/models/base/error_response.dart';
+import 'package:smart_home/app/data/models/base/base_data_response.dart';
+import 'package:smart_home/app/data/models/base/error_response.dart';
 
 part 'login_response.g.dart';
 

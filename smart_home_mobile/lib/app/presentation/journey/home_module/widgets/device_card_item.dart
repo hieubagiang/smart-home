@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
-import 'package:smart_home_mobile/app/common/constants/icon_constants.dart';
-import 'package:smart_home_mobile/app/common/constants/layout_constant.dart';
-import 'package:smart_home_mobile/app/domain/entities/Device.dart';
+import 'package:smart_home/app/common/base/base_view_view_model.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/constants/icon_constants.dart';
+import 'package:smart_home/app/common/constants/layout_constant.dart';
+import 'package:smart_home/app/domain/entities/Device.dart';
 
 class DeviceCard extends StatefulWidget {
   const DeviceCard({

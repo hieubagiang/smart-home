@@ -1,5 +1,5 @@
-import 'package:smart_home_mobile/app/data/models/room_model/room_model.dart';
-import 'package:smart_home_mobile/app/domain/entities/Device.dart';
+import 'package:smart_home/app/data/models/room_model/room_model.dart';
+import 'package:smart_home/app/domain/entities/Device.dart';
 
 class RoomEntity {
   int? id;

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/network/http/dio_config.dart';
-import 'package:smart_home_mobile/app/data/datasources/remote/authentication_api.dart';
-import 'package:smart_home_mobile/app/data/repositories_impl/authentication_repository_impl.dart';
+import 'package:smart_home/app/common/network/http/dio_config.dart';
+import 'package:smart_home/app/data/datasources/remote/authentication_api.dart';
+import 'package:smart_home/app/data/repositories_impl/authentication_repository_impl.dart';
 
 import 'app_logic.dart';
 

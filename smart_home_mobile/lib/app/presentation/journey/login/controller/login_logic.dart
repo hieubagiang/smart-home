@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_mobile/app/common/base/base_controller.dart';
-import 'package:smart_home_mobile/app/common/helper/storage_helper.dart';
-import 'package:smart_home_mobile/app/domain/entities/authentication/login_entity.dart';
-import 'package:smart_home_mobile/app/domain/requests/login_request.dart';
-import 'package:smart_home_mobile/app/presentation/journey/login/use_case/impl/authentication_use_case_impl.dart';
-import 'package:smart_home_mobile/app/presentation/routes/app_pages.dart';
+import 'package:smart_home/app/common/base/base_controller.dart';
+import 'package:smart_home/app/common/helper/storage_helper.dart';
+import 'package:smart_home/app/domain/entities/authentication/login_entity.dart';
+import 'package:smart_home/app/domain/requests/login_request.dart';
+import 'package:smart_home/app/presentation/journey/login/use_case/impl/authentication_use_case_impl.dart';
+import 'package:smart_home/app/presentation/routes/app_pages.dart';
 
 class LoginController extends BaseController {
   final useCase = Get.find<LoginUseCaseImpl>();

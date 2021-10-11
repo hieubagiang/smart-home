@@ -2,10 +2,10 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:smart_home_mobile/app/common/base/base_view_view_model.dart';
-import 'package:smart_home_mobile/app/common/constants/colors_constant.dart';
-import 'package:smart_home_mobile/app/common/utils/styles.dart';
-import 'package:smart_home_mobile/app/presentation/widgets/textfields.dart';
+import 'package:smart_home/app/common/base/base_view_view_model.dart';
+import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/utils/styles.dart';
+import 'package:smart_home/app/presentation/widgets/textfields.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
