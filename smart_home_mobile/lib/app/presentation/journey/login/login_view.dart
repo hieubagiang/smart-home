@@ -14,23 +14,25 @@ class LoginPage extends BaseView<LoginController> {
   Widget vBuilder(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         backgroundColor: ColorUtils.secondaryColor,
-        body: Container(
-          child: Column(
-            children: [
-              SizedBox(
-                height: SpaceUtils.spaceLarge,
-              ),
-              Container(
-                child: Image.asset(ImageConstants.loginBackgroundImage),
-              ),
-              _buildLoginForm(),
-              SizedBox(
-                height: SpaceUtils.spaceMedium,
-              ),
-              //_buildFooter(),
-            ],
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: SpaceUtils.spaceLarge,
+                ),
+                Container(
+                  child: Image.asset(ImageConstants.loginBackgroundImage),
+                ),
+                _buildLoginForm(),
+                SizedBox(
+                  height: SpaceUtils.spaceMedium,
+                ),
+                //_buildFooter(),
+              ],
+            ),
           ),
         ),
       ),

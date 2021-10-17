@@ -112,6 +112,6 @@ class BaseController extends GetxController
 
   Future<void> logOut() async {
     await StorageHelper.clearUserLogin();
-    Get.offAllNamed(Routes.LOGIN);
+    Get.offAllNamed(RouteList.LOGIN);
   }
 }

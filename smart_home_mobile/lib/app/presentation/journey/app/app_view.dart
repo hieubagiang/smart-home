@@ -18,7 +18,7 @@ class RootScreen extends BaseView<AppController> {
       designSize: Size(375, 812),
       builder: () {
         return GetMaterialApp(
-            initialRoute: Routes.LOGIN,
+            initialRoute: RouteList.LOGIN,
             getPages: AppPages.pages,
             translations: MyTranslations(),
             locale: MyTranslations.locale,

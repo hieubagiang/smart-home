@@ -1,5 +1,6 @@
 import 'package:smart_home/app/data/models/room_model/room_model.dart';
 import 'package:smart_home/app/domain/entities/Device.dart';
+import 'package:smart_home/app/domain/entities/message_entity.dart';
 
 class RoomEntity {
   int? id;
@@ -21,10 +22,11 @@ class RoomEntity {
     return RoomModel.parseEntity(this);
   }
 
-  void changeDeviceStatus(String topic, String message) {
+  void changeDeviceStatus(MessageEntity messageEntity) {
+
     this.devices?.forEach((element) {
-      if (element.topic == topic) {
-        element.setStatus(message);
+      if (element.digitalIo == messageEntity.digitalIo) {
+        element.setStatus(messageEntity);
       }
     });
   }

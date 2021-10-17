@@ -1,8 +1,10 @@
 part of 'app_pages.dart';
 
 
-abstract class Routes {
-  static const HOME_PAGE = '/home_page';
+abstract class RouteList {
+  static const MAIN = '/main';
+  static const HOME = '/home';
+  static const LOGIN = '/login';
+  static const ROOM_MANAGEMENT = '/settings/room-management';
 
-  static const LOGIN = '/login'; // home_page page
 }

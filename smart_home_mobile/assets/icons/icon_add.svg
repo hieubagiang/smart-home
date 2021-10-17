@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="74" height="74" viewBox="0 0 74 74">
+  <defs>
+    <filter id="Ellipse_3" x="0" y="0" width="74" height="74" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Add_Transaction_Button" data-name="Add Transaction Button" transform="translate(-147 -701)">
+    <g transform="matrix(1, 0, 0, 1, 147, 701)" filter="url(#Ellipse_3)">
+      <g id="Ellipse_3-2" data-name="Ellipse 3" transform="translate(9 6)" stroke="#000" stroke-width="1">
+        <circle cx="28" cy="28" r="28" stroke="none"/>
+        <circle cx="28" cy="28" r="27.5" fill="none"/>
+      </g>
+    </g>
+    <path id="Icon_awesome-plus" data-name="Icon awesome-plus" d="M24.143,12.464H15.786V4.107A1.857,1.857,0,0,0,13.929,2.25H12.071a1.857,1.857,0,0,0-1.857,1.857v8.357H1.857A1.857,1.857,0,0,0,0,14.321v1.857a1.857,1.857,0,0,0,1.857,1.857h8.357v8.357a1.857,1.857,0,0,0,1.857,1.857h1.857a1.857,1.857,0,0,0,1.857-1.857V18.036h8.357A1.857,1.857,0,0,0,26,16.179V14.321A1.857,1.857,0,0,0,24.143,12.464Z" transform="translate(171 719.75)" fill="#fff"/>
+  </g>
+</svg>

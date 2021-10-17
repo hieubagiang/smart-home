@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpaceUtils {
@@ -42,8 +41,6 @@ class HeightUtils {
   static final double heightExtraLargeDivider = 5.h;
 
   static final double heightComment = 240.h;
-  static final double iconSize = 24.w;
-  static final double iconSizeLarge = 36.w;
 }
 
 class WidthUtils {
@@ -59,15 +56,16 @@ class FontSizeUtils {
 }
 
 class SizeUtils {
-  static double getStatusBarHeight(BuildContext context) {
-    return MediaQuery.of(context).padding.top;
-  }
+  static final double iconSize = 24.w;
+  static final double iconSizeLarge = 36.w;
+  static final double iconSizeExtraLarge = 36.w;
+  static final double floatingButtonSize = 56.w;
+  static final double avatarSize = 80.w;
 
-  static double getScreenHeight(BuildContext context) {
-    return MediaQuery.of(context).size.height;
-  }
+}
+class LayoutConstants {
+  static final paddingHorizontalSmall = SpaceUtils.spaceSmall;
+  static final paddingHorizontalApp = SpaceUtils.spaceMedium;
+  static final paddingVerticalApp = SpaceUtils.spaceMedium;
 
-  static double getScreenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
-  }
 }

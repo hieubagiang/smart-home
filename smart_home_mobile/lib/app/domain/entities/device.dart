@@ -1,72 +1,56 @@
-import 'dart:developer';
+import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:smart_home/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home/app/common/utils/functions.dart';
+import 'package:smart_home/app/data/models/message_model.dart';
+import 'package:smart_home/app/domain/entities/message_entity.dart';
 
 class Device {
   String? id;
   String? title;
   String? subtitle;
   dynamic icon;
-  bool isEnable;
+  int status;
   String? topic;
   bool isAuto;
+  int? digitalIo;
 
-  Device({this.title,
-    this.subtitle,
-    this.icon,
-    this.isEnable = false,
-    this.id,
-    this.isAuto = true,
-    required this.topic});
+  Device(
+      {this.title,
+      this.subtitle,
+      this.icon,
+      this.status = 0,
+      this.id,
+      this.isAuto = true,
+      this.digitalIo,
+      required this.topic});
 
-  void controlDevice(bool isEnable) {
-    this.isEnable = isEnable;
+  void controlDevice(bool value) {
+    this.status = value == true ? 1 : 0;
   }
 
-  int getPushValue() {
-    if (this.isAuto) {
-      return isEnable ? 1 : 0;
-    } else {
-      return isEnable ? 3 : 2;
-    }
+  MessageModel getPushMessage() {
+    return MessageModel.parseEntity(MessageEntity(
+        digitalIo: this.digitalIo, status: this.status, isAuto: this.isAuto));
   }
 
-  void setStatus(dynamic value) {
-    if (value is String) {
-      value = num.tryParse(value);
-    }
-    if(value!=null) {
-      log('${this.title} will set status = $value \n ${toString()}');
-      if (value == 0) {
-        isEnable = false;
-        this.isAuto = true;
-      } else if (value == 1) {
-        isEnable = true;
-        this.isAuto = true;
-      } else if (value == 2) {
-        isEnable = false;
-        this.isAuto = false;
-      } else if (value == 3) {
-        isEnable = true;
-        this.isAuto = false;
-      }
-      log('changed value \n= ${toString()}');
-    }
+  void setStatus(MessageEntity messageEntity) {
+    this.isAuto = messageEntity.isAuto ?? this.isAuto;
+    this.status = messageEntity.status ?? this.status;
   }
 
   void pushDeviceStatus() {
-    if(this.topic!=null && this.topic!.isNotEmpty){
+    if (this.topic != null && this.topic!.isNotEmpty) {
       FunctionUtils.logWhenDebug(this, 'this.topic====> true =$this');
-      MQTTHelper().publishToTopic(this.topic!, '${getPushValue()}');
-    }else{
+      MQTTHelper().publishToTopic(this.topic!, '${jsonEncode(getPushMessage().toJson())}');
+    } else {
       FunctionUtils.logWhenDebug(this, 'this.topic false =$this');
     }
   }
 
+  bool get isEnable => this.status == 1;
   @override
   String toString() {
-    return 'Device{id: $id, title: $title, subtitle: $subtitle, leftIcon: $icon, isEnable: $isEnable, topic: $topic, isAuto: $isAuto}';
+    return 'Device{id: $id, title: $title, subtitle: $subtitle, leftIcon: $icon, status: $status, topic: $topic, isAuto: $isAuto}';
   }
 }

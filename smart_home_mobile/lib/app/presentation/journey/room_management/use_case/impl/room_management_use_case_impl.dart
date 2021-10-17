@@ -1,23 +1,16 @@
 import 'package:smart_home/app/common/helper/storage_helper.dart';
 import 'package:smart_home/app/domain/entities/room_entity/room_entity.dart';
-import 'package:smart_home/app/domain/entities/user_entity/user_entity.dart';
 import 'package:smart_home/app/domain/repositories/room_repository.dart';
 import 'package:smart_home/app/domain/repositories/user_repository.dart';
+import 'package:smart_home/app/domain/requests/edit_device_request.dart';
 
-import '../home_use_case.dart';
+import '../room_management_use_case.dart';
 
-class HomeUseCaseImpl extends HomeUseCase {
+class RoomManagementUseCaseImpl extends RoomManagementUseCase {
   final UserRepository userRepository;
   final RoomRepository roomRepository;
 
-  HomeUseCaseImpl(this.userRepository, this.roomRepository);
-
-  @override
-  Future<UserEntity?> getUserData() async {
-    String accessToken = (await StorageHelper.getDataUser())?.accessToken ?? '';
-    final response = await userRepository.getUserData(accessToken);
-    return UserEntity.parseModel(response);
-  }
+  RoomManagementUseCaseImpl(this.userRepository, this.roomRepository);
 
   @override
   Future<List<RoomEntity>> getRoomList() async {
@@ -30,8 +23,23 @@ class HomeUseCaseImpl extends HomeUseCase {
   }
 
   @override
-  Future<void> initMqtt() {
-    // TODO: implement initMqtt
+  Future<bool> createRoom({required EditDeviceRequest request}) async {
+    String accessToken = (await StorageHelper.getDataUser())?.accessToken ?? '';
+    List<RoomEntity> list = [];
+    final listModel = await roomRepository.addRoom(
+        accessToken: accessToken, request: request);
+    return false;
+  }
+
+  @override
+  Future<bool> deleteRoom() {
+    // TODO: implement deleteRoomList
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> editRoom() {
+    // TODO: implement editRoomList
     throw UnimplementedError();
   }
 }

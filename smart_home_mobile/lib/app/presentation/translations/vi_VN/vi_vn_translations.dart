@@ -20,5 +20,12 @@ final Map<String, String> viVn = {
   'logout_confirm_message':'Bạn có muốn đăng xuất không?',
   'connect_status':'Trạng thái kết nối',
   'connected_message':'Đã kết nối',
-  'disconnected_message':'Đã ngắt kết nối'
+  'disconnected_message':'Đã ngắt kết nối',
+  "schedule": "Lập lịch",
+  "notifications":"Thông báo",
+  "settings":"Cài đặt",
+  'about_me':"Về chúng tôi",
+  "rate_me" :"Đánh giá",
+  "room_management":"Quản lý phòng",
+  'some_thing_went_wrong':'Lỗi không xác định.'
 };
