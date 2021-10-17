@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home/app/common/base/base_view_view_model.dart';
-import 'package:smart_home/app/presentation/journey/home_module/home_page.dart';
+import 'package:smart_home/app/presentation/journey/home/home_page.dart';
 import 'package:smart_home/app/presentation/journey/main/widgets/bottom_tab.dart';
 import 'package:smart_home/app/presentation/journey/profile/profile_screen.dart';
 

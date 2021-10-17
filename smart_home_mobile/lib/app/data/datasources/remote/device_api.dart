@@ -15,7 +15,7 @@ abstract class DeviceApi {
       @Header(Configurations.authentication) String authorization);
 
   @POST('${UrlConstants.roomUrl}/{room-id}${UrlConstants.deviceUrl}')
-  @FormUrlEncoded()
+  
   Future<int> addDevice(
     @Header(Configurations.authentication) String authorization,
     @Body() Map<String, dynamic> map,
@@ -23,7 +23,7 @@ abstract class DeviceApi {
 
   @PUT(
       '${UrlConstants.roomUrl}/{room-id}${UrlConstants.deviceUrl}/{device-id}')
-  @FormUrlEncoded()
+  
   Future<int> editDevice(
     @Header(Configurations.authentication) String authorization,
     @Path("room-id") String roomId,

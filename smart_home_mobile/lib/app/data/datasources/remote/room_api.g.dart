@@ -41,8 +41,7 @@ class _RoomApi implements RoomApi {
     final _result = await _dio.fetch<int>(_setStreamType<int>(Options(
             method: 'POST',
             headers: <String, dynamic>{r'Authorization': authorization},
-            extra: _extra,
-            contentType: 'application/x-www-form-urlencoded')
+            extra: _extra)
         .compose(_dio.options, '/rooms',
             queryParameters: queryParameters, data: _data)
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
@@ -59,8 +58,7 @@ class _RoomApi implements RoomApi {
     final _result = await _dio.fetch<int>(_setStreamType<int>(Options(
             method: 'PUT',
             headers: <String, dynamic>{r'Authorization': authorization},
-            extra: _extra,
-            contentType: 'application/x-www-form-urlencoded')
+            extra: _extra)
         .compose(_dio.options, '/rooms/$roomID',
             queryParameters: queryParameters, data: _data)
         .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));

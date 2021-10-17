@@ -13,8 +13,8 @@ import 'package:smart_home/app/common/utils/date_time.dart';
 import 'package:smart_home/app/common/utils/styles.dart';
 import 'package:smart_home/app/data/enum/room_enum.dart';
 import 'package:smart_home/app/domain/entities/Device.dart';
-import 'package:smart_home/app/presentation/journey/home_module/home_controller.dart';
-import 'package:smart_home/app/presentation/journey/home_module/widgets/device_card_item.dart';
+import 'package:smart_home/app/presentation/journey/home/home_controller.dart';
+import 'package:smart_home/app/presentation/journey/home/widgets/device_card_item.dart';
 
 import 'mock_data.dart';
 
@@ -124,17 +124,6 @@ class HomePage extends BaseView<HomeController> {
                   }),
                 ],
               ),
-              GestureDetector(
-                child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.exit_to_app,
-                      color: Colors.orange,
-                    )),
-                onTap: () {
-                  controller.onTapLogout();
-                },
-              )
             ],
           ),
           SizedBox(
@@ -143,7 +132,7 @@ class HomePage extends BaseView<HomeController> {
           Expanded(child: _buildWeatherStats())
         ],
       ),
-    );
+      );
   }
 
   Widget _buildWeatherStats() {

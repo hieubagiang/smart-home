@@ -4,7 +4,7 @@ import 'package:smart_home/app/domain/entities/user_entity/user_entity.dart';
 import 'package:smart_home/app/domain/repositories/room_repository.dart';
 import 'package:smart_home/app/domain/repositories/user_repository.dart';
 
-import '../home_use_case.dart';
+import '../../presentation/journey/home/use_case/home_use_case.dart';
 
 class HomeUseCaseImpl extends HomeUseCase {
   final UserRepository userRepository;

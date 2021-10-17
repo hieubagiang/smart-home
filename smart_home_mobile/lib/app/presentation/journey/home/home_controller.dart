@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:smart_home/app/common/base/base_controller.dart';
+import 'package:smart_home/app/common/helper/push_notificaction_helper/model/message.dart';
+import 'package:smart_home/app/common/helper/push_notificaction_helper/push_notification_helper.dart';
 import 'package:smart_home/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home/app/common/helper/socket_io_helper.dart';
 import 'package:smart_home/app/common/helper/storage_helper.dart';
@@ -11,14 +13,21 @@ import 'package:smart_home/app/domain/entities/device_entity/device_entity.dart'
 import 'package:smart_home/app/domain/entities/message_entity.dart';
 import 'package:smart_home/app/domain/entities/room_entity/room_entity.dart';
 import 'package:smart_home/app/domain/entities/user_entity/user_entity.dart';
-import 'package:smart_home/app/presentation/journey/home_module/mock_data.dart';
-import 'package:smart_home/app/presentation/journey/home_module/use_case/home_use_case.dart';
-import 'package:smart_home/app/presentation/journey/home_module/use_case/impl/home_use_case_impl.dart';
+import 'package:smart_home/app/domain/requests/push_notification/notification_request.dart';
+import 'package:smart_home/app/domain/requests/push_notification/push_notification_data_request.dart';
+import 'package:smart_home/app/domain/requests/push_notification/push_notification_request.dart';
+import 'package:smart_home/app/presentation/journey/home/mock_data.dart';
+import 'package:smart_home/app/presentation/journey/home/use_case/home_use_case.dart';
+import 'package:smart_home/app/domain/usecases/home_use_case_impl.dart';
+import 'package:smart_home/app/presentation/journey/main/main_use_case.dart';
 import 'package:smart_home/app/presentation/routes/app_pages.dart';
 
 class HomeController extends BaseController {
+  final MainUseCase mainUseCase;
   final HomeUseCase homeUseCase = Get.find<HomeUseCaseImpl>();
   var _obj = ''.obs;
+
+  HomeController(this.mainUseCase);
 
   set obj(value) => _obj.value = value;
 
@@ -71,8 +80,7 @@ class HomeController extends BaseController {
         this.roomList.forEach((roomEntity) {
           roomEntity.changeDeviceStatus(messageEntity);
         });
-        temp.value = messageEntity.data?[0]??temp.value;
-        humidity.value = messageEntity.data?[1]??humidity.value;
+        setStatics(messageEntity.data?[0]??this.temp.value,messageEntity.data?[1]??this.humidity.value);
         roomList.refresh();
       }
     };
@@ -114,5 +122,68 @@ class HomeController extends BaseController {
     MQTTHelper().client.disconnect();
     hideDialog();
     Get.offNamed(RouteList.LOGIN);
+  }
+
+  void setStatics(double temp, double humidity){
+    this.temp.value = temp;
+    this.humidity.value = humidity;
+
+    final token = PushNotificationHelper().getFcmToken()!;
+    if(temp>= 25 && temp <=28){
+      mainUseCase.sendPushNotification(PushNotificationRequest(
+        priority: 'HIGH',
+        to: token,
+        data: PushNotificationDataRequest(
+          title: 'Smart Home',
+          body: 'Nhiệt độ hiện tại là $temp độ, độ ẩm là $humidity%',
+          tag: 'statics',
+          priority: 0,
+          clickAction: 'FLUTTER_NOTIFICATION_CLICK',
+        ),
+        notification: NotificationRequest(
+            title: 'Smart Home',
+            body: 'Nhiệt độ hiện tại là $temp độ, độ ẩm là $humidity%',
+            tag: 'statics',
+        )
+      ));
+    }
+    else if(temp<25 || temp>28){
+      mainUseCase.sendPushNotification(PushNotificationRequest(
+          priority: 'HIGH',
+          to: token,
+          data: PushNotificationDataRequest(
+            title: 'Smart Home',
+            body: 'Cảnh báo nhiệt độ vượt ngưỡng $temp độ',
+            tag: 'temp_alert',
+            priority: 2,
+            clickAction: 'FLUTTER_NOTIFICATION_CLICK',
+          ),
+          notification: NotificationRequest(
+              title: 'Smart Home',
+              body: 'Cảnh báo nhiệt độ vượt ngưỡng $temp độ',
+              tag: 'temp_alert',
+              sound: 'red_alert'
+          )
+      ));
+    }
+    if(humidity>85 || humidity<65){
+      mainUseCase.sendPushNotification(PushNotificationRequest(
+          priority: 'HIGH',
+          to: token,
+          data: PushNotificationDataRequest(
+            title: 'Smart Home',
+            body: 'Cảnh báo độ ẩm vượt ngưỡng $temp%',
+            tag: 'humidity_alert',
+            priority: 2,
+            clickAction: 'FLUTTER_NOTIFICATION_CLICK',
+          ),
+          notification: NotificationRequest(
+              title: 'Smart Home',
+              body: 'Cảnh báo độ ẩm vượt ngưỡng $temp%',
+              tag: 'humidity_alert',
+              sound: 'red_alert'
+          )
+      ));
+    }
   }
 }

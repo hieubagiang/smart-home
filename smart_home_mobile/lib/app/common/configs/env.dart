@@ -6,6 +6,7 @@ abstract class EnvConfig {
   String getProductImageUrl();
   String getBasicAuth();
   String getBearerAuth();
+  String getFirebaseServerAuth();
   String getGoogleMapApiKey();
   String getDeepLinksIos();
   String getDeepLinksAndroid();

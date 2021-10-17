@@ -13,6 +13,9 @@ class Configurations {
   static const String contentType = 'application/json; charset=utf-8';
   static const String authentication = 'Authorization';
   static const String facebookApi = 'https://graph.facebook.com/';
+  static const String firebaseRestApi = 'https://fcm.googleapis.com/';
+  static const String firebaseServerToken =
+      'AAAAPPx-kng:APA91bF8ZeyC86z7E1iGskHyuOPQJgMY0JJ43G8-mUEHqwrQ2p2XrKl8YI8QKOvey6lQ0SDkiEnXkuQwVLtXylvinmVLj0mIIPzn7XF7IyizspOzcTO97E6Ct5WoHleSP_IWEELumHh8';
   static const String facebookImage =
       'https://graph.facebook.com/v9.0/%s/picture';
 
@@ -23,6 +26,7 @@ class Configurations {
       _environment.getSplashScreenSecondTimeOut();
   static String _basicAuth = _environment.getBasicAuth();
   static String _bearerAuth = _environment.getBearerAuth();
+  static String _firebaseServerAuth = _environment.getFirebaseServerAuth();
   static String _deepLinksIos = _environment.getDeepLinksIos();
   static String _deepLinksAndroid = _environment.getDeepLinksAndroid();
   static String _googleMapApiKey = _environment.getGoogleMapApiKey();
@@ -47,6 +51,10 @@ class Configurations {
     return '$_bearerAuth $token';
   }
 
+  static String getFirebaseServerAuth(String token) {
+    return '$_firebaseServerAuth=$token';
+  }
+
   static String get googleMapApiKey => _googleMapApiKey;
 
   static String get deepLinksIos => _deepLinksIos;
@@ -54,7 +62,9 @@ class Configurations {
   static String get deepLinksAndroid => _deepLinksAndroid;
 
   static String get productHost => _productHost;
+
   static String get androidAppId => _androidAppId;
+
   static String get iosAppId => _iosAppId;
 
   static String get linkShareIos =>

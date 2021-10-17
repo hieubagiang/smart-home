@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:smart_home/app/presentation/journey/home_module/home_bindings.dart';
-import 'package:smart_home/app/presentation/journey/home_module/home_page.dart';
+import 'package:smart_home/app/presentation/journey/home/home_bindings.dart';
+import 'package:smart_home/app/presentation/journey/home/home_page.dart';
 import 'package:smart_home/app/presentation/journey/login/login_binding.dart';
 import 'package:smart_home/app/presentation/journey/login/login_view.dart';
 import 'package:smart_home/app/presentation/journey/main/controller/main_binding.dart';

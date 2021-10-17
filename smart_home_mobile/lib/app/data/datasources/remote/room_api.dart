@@ -15,14 +15,14 @@ abstract class RoomApi {
       @Header(Configurations.authentication) String authorization);
 
   @POST('${UrlConstants.roomUrl}')
-  @FormUrlEncoded()
+
   Future<int> addRoom(
     @Header(Configurations.authentication) String authorization,
     @Body() Map<String, dynamic> map,
   );
 
   @PUT('${UrlConstants.roomUrl}/{room-id}')
-  @FormUrlEncoded()
+
   Future<int> editRoom(
     @Header(Configurations.authentication) String authorization,
     @Path("room-id") String roomID,

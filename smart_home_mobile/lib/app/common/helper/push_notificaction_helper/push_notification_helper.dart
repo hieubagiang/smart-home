@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:smart_home/app/common/utils/functions.dart';
+import 'package:smart_home/app/domain/repositories/firebase_restful_api_repository.dart';
 
-import 'local_notification_helper.dart';
+import '../local_notification_helper.dart';
 
 class PushNotificationHelper {
   late FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-
   Function(String)? handleNotificationTap;
   String? _fcmToken;
   String? _payLoad;
@@ -86,6 +86,8 @@ String getNotificationContent(RemoteMessage? message) {
       'body': message.notification?.body,
     },
     'data': message.data,
+    'message_type': message.messageType,
+    'category': message.category,
     "collapse_key": message.collapseKey,
     "message_id": message.messageId,
     "sent_time": message.sentTime?.millisecondsSinceEpoch,
@@ -97,6 +99,6 @@ String getNotificationContent(RemoteMessage? message) {
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
-  print('Handling a background message ${message.messageId}');
+  print('Handling a background message ${getNotificationContent(message)}');
 }
 

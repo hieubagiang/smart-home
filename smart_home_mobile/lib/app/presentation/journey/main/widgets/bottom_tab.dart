@@ -24,7 +24,7 @@ class BottomTabMain extends GetWidget<MainController> {
                 color: ColorUtils.thirdColor,
               ))),
       padding: EdgeInsets.symmetric(
-          vertical: SpaceUtils.spaceSmall, horizontal: SpaceUtils.spaceMedium),
+          horizontal: SpaceUtils.spaceMedium),
       child: Obx(() =>
           BottomNavigationBar(
             showUnselectedLabels: true,

@@ -9,6 +9,7 @@ class DefaultConfig extends EnvConfig {
   final _environment = 'dev';
   final _basicAuth = 'anonymous';
   final _bearerAuth = 'Bearer';
+  final _firebaseServerAuth = 'key';
   final _googleMapApiKey = '';
   final _productHost = 'domain/v1/api/public/';
 
@@ -75,5 +76,10 @@ class DefaultConfig extends EnvConfig {
   @override
   String getIosAppId() {
     return 'iosappid';
+  }
+
+  @override
+  String getFirebaseServerAuth() {
+    return _firebaseServerAuth;
   }
 }

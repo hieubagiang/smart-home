@@ -4,10 +4,10 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:smart_home/app/common/constants/colors_constant.dart';
 
 const notificationChannel = "Smart Home";
-const notificationChannelId = "smart_home_channel_id_0";
+const notificationChannelId = "smart_home_global_channel";
 const notificationChannelDescription = "Channel for notification";
 const notificationIconPath = '@mipmap/ic_launcher';
-const notificationSoundPath = '';
+const notificationSoundPath = 'red_alert';
 
 class LocalNotificationHelper {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -78,7 +78,7 @@ class LocalNotificationHelper {
       vibrationPattern: vibrationPattern,
       importance: Importance.max,
       priority: Priority.max,
-      //sound: RawResourceAndroidNotificationSound(notificationSoundPath)
+      sound: RawResourceAndroidNotificationSound(notificationSoundPath)
     );
     IOSNotificationDetails iOSPlatformChannelSpecifics = IOSNotificationDetails(
         presentAlert: true,

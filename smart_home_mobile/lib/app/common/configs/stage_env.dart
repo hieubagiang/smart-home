@@ -10,6 +10,7 @@ class StageConfig extends EnvConfig {
   final _environment = 'stage';
   final _basicAuth = 'anonymous';
   final _bearerAuth = 'Bearer';
+  final _firebaseServerAuth = 'server';
   final _googleMapApiKey = 'AIzaSyDdM0cR-vVDPjT0rWs6HdHBfbokSOcRz6Q';
   final _productHost = 'https://youngkidsfc.com/v1/api/public/';
 
@@ -76,5 +77,10 @@ class StageConfig extends EnvConfig {
   @override
   String getIosAppId() {
     return '1552416853';
+  }
+
+  @override
+  String getFirebaseServerAuth() {
+    return _firebaseServerAuth;
   }
 }
