@@ -45,7 +45,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     leading ??
                         Icon(
-                          icon ?? Icons.menu,
+                          icon ?? Icons.arrow_back_ios,
                           color: Colors.white,
                         ),
                     if (leadingText != null)

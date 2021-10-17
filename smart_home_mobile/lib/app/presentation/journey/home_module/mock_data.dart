@@ -8,28 +8,30 @@ class MockData {
         Device(
             title: 'Đèn',
             icon: Icons.lightbulb_outline,
-            isEnable: true,
+            status: 1,
             isAuto: true,
-            topic: 'smarthome/led'),
+            topic: 'smarthome'),
         Device(
             title: 'Quạt',
             icon: FontAwesomeIcons.fan,
-            isEnable: false,
+            status: 0,
             isAuto: true,
-            topic: 'smarthome/cooling'),
+            digitalIo:4,
+            topic: 'smarthome'),
       ];
 
   static List<Device> get devicesOfBedRoom => <Device>[
         Device(
             title: 'Đèn',
             icon: Icons.lightbulb_outline,
-            isEnable: true,
+            status: 1,
             isAuto: false,
-            topic: ''),
+            digitalIo:2,
+            topic: 'smarthome'),
         Device(
             title: 'Quạt',
             icon: FontAwesomeIcons.fan,
-            isEnable: false,
+            status: 0,
             isAuto: false,
             topic: ''),
       ];
@@ -38,34 +40,35 @@ class MockData {
         Device(
             title: 'Đèn',
             icon: Icons.lightbulb_outline,
-            isEnable: false,
+            status: 0,
             isAuto: true,
             topic: ''),
         Device(
             title: 'Quạt',
             icon: FontAwesomeIcons.fan,
-            isEnable: false,
+            status: 0,
             isAuto: false,
             topic: ''),
         Device(
-            title: 'Hệ thống báo cháy',
+            title: 'Còi báo động',
             icon: FontAwesomeIcons.bullhorn,
-            isEnable: false,
+            status: 0,
             isAuto: true,
-            topic: 'smarthome/flame'),
+            digitalIo: 3,
+            topic: 'smarthome'),
       ];
 
   static List<Device> get devicesOfBathRoom => <Device>[
         Device(
             title: 'Đèn',
             icon: Icons.lightbulb_outline,
-            isEnable: false,
+            status: 0,
             isAuto: true,
             topic: ''),
         Device(
             title: 'Nóng lạnh',
             icon: IconConstants.waterHeaterIcon,
-            isEnable: false,
+            status: 0,
             isAuto: false,
             topic: ''),
       ];
@@ -74,19 +77,20 @@ class MockData {
         Device(
             title: 'Đèn',
             icon: Icons.lightbulb_outline,
-            isEnable: false,
+            status: 0,
             isAuto: true,
             topic: ''),
         Device(
             title: 'Tưới cây',
             icon: FontAwesomeIcons.seedling,
-            isEnable: false,
+            status: 0,
             isAuto: true,
-            topic: 'smarthome/watertree'),
+            digitalIo: 1,
+            topic: 'smarthome'),
         Device(
             title: 'Còi báo động',
             icon: FontAwesomeIcons.bullhorn,
-            isEnable: false,
+            status: 0,
             isAuto: true,
             topic: ''),
       ];

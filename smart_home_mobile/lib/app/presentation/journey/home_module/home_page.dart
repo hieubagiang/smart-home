@@ -64,7 +64,6 @@ class HomePage extends BaseView<HomeController> {
 
   List<ScrollableListTab> _buildListRoom(HomeController controller) {
     List<ScrollableListTab> listRoomTab = List.empty(growable: true);
-    print('controller.roomList= ${controller.roomList.length}');
     controller.roomList.forEach((roomEntity) {
       listRoomTab.add(ScrollableListTab(
           tab: ListTab(label: Text(roomEntity.name ?? '')),
@@ -79,8 +78,8 @@ class HomePage extends BaseView<HomeController> {
             itemBuilder: (BuildContext context, int index) {
               return DeviceCard(
                 model: roomEntity.devices?[index],
-                onChange: (bool) {
-                  roomEntity.devices?[index].controlDevice(bool);
+                onChange: (bool value) {
+                  roomEntity.devices?[index].controlDevice(value);
                   roomEntity.devices?[index].pushDeviceStatus();
                 },
                 changeAutoStatus: (bool) {
@@ -157,7 +156,7 @@ class HomePage extends BaseView<HomeController> {
                 FaIcon(
                   FontAwesomeIcons.thermometerQuarter,
                   color: ColorUtils.whiteColor,
-                  size: HeightUtils.iconSizeLarge,
+                  size: SizeUtils.iconSizeLarge,
                 ),
                 '${controller.temp.value}${ConstantsUtils.DEGREE_C}'),
           ),
@@ -166,8 +165,8 @@ class HomePage extends BaseView<HomeController> {
                 Image.asset(
                   IconConstants.hygrometerIcon,
                   color: ColorUtils.whiteColor,
-                  height: HeightUtils.iconSizeLarge + 8.w,
-                  width: HeightUtils.iconSizeLarge + 8.w,
+                  height: SizeUtils.iconSizeLarge + 8.w,
+                  width: SizeUtils.iconSizeLarge + 8.w,
                 ),
                 '${controller.humidity.value}${ConstantsUtils.PERCENT}'),
           ),

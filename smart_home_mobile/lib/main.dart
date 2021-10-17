@@ -22,7 +22,7 @@ Future<void> main() async {
   LoginModel? data = await StorageHelper.getDataUser();
   print(data);
   runApp(DevicePreview(
-    enabled: !kReleaseMode,
+    enabled: false,
     builder: (context) => MyApp(
       isInitLogin: data == null, // Wrap your app
     ),
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(375, 812),
       builder: () {
         return GetMaterialApp(
-          initialRoute: isInitLogin ? Routes.LOGIN : Routes.HOME_PAGE,
+          initialRoute: isInitLogin ? RouteList.LOGIN : RouteList.MAIN,
           initialBinding: AppBinding(),
           getPages: AppPages.pages,
           translations: MyTranslations(),

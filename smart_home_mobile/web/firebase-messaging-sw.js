@@ -1,7 +1,7 @@
 importScripts("https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.6.1/firebase-messaging.js");
 
-firebase.initializeApp({
+firebase.initializeApp( {
     apiKey: "AIzaSyAL5ny2VfknzcdNnWwY8gP4OEsXxx820fU",
     authDomain: "smart-home-1d42f.firebaseapp.com",
     projectId: "smart-home-1d42f",

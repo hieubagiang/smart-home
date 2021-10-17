@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:smart_home/app/common/base/base_controller.dart';
 import 'package:smart_home/app/common/helper/mqtt_helper.dart';
 import 'package:smart_home/app/common/helper/socket_io_helper.dart';
 import 'package:smart_home/app/common/helper/storage_helper.dart';
+import 'package:smart_home/app/data/models/message_model.dart';
 import 'package:smart_home/app/domain/entities/device_entity/device_entity.dart';
+import 'package:smart_home/app/domain/entities/message_entity.dart';
 import 'package:smart_home/app/domain/entities/room_entity/room_entity.dart';
 import 'package:smart_home/app/domain/entities/user_entity/user_entity.dart';
 import 'package:smart_home/app/presentation/journey/home_module/mock_data.dart';
@@ -19,8 +23,11 @@ class HomeController extends BaseController {
   set obj(value) => _obj.value = value;
 
   get obj => _obj.value;
-  RxString temp = RxString('0');
-  RxString humidity = RxString('100');
+  RxDouble temp = RxDouble(20);
+  RxDouble humidity = RxDouble(80);
+
+  //RxList<RoomEntity> roomList = RxList.empty(growable: true);
+
   RxList<RoomEntity> roomList = RxList([
     RoomEntity(
         id: 5,
@@ -43,7 +50,7 @@ class HomeController extends BaseController {
         roomType: "4",
         devices: MockData.devicesOfBathRoom),
     RoomEntity(
-        id: 9, name: 'Sân', roomType: "5", devices: MockData.devicesOfYard),
+        id: 9, name: 'Vườn', roomType: "5", devices: MockData.devicesOfYard),
   ]);
   RxList<DeviceEntity> deviceList = RxList([]);
   Rx<UserEntity?> userData = Rx(null);
@@ -58,20 +65,15 @@ class HomeController extends BaseController {
       final recMess = mqttReceivedMessage.payload as MqttPublishMessage;
       final payLoad =
           MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
-      if (mqttReceivedMessage.topic == 'smarthome/led' ||
-          mqttReceivedMessage.topic == 'smarthome/flame' ||
-          mqttReceivedMessage.topic == 'smarthome/watertree') {
+      if (mqttReceivedMessage.topic == 'smarthome') {
+        print('recevied: $payLoad');
+        final messageEntity = MessageEntity.parseModel(MessageModel.fromJson(jsonDecode(payLoad)));
         this.roomList.forEach((roomEntity) {
-          roomEntity.changeDeviceStatus(mqttReceivedMessage.topic, payLoad);
+          roomEntity.changeDeviceStatus(messageEntity);
         });
+        temp.value = messageEntity.data?[0]??temp.value;
+        humidity.value = messageEntity.data?[1]??humidity.value;
         roomList.refresh();
-      }
-      if (mqttReceivedMessage.topic == 'smarthome/temp') {
-        temp.value = payLoad;
-      }
-
-      if (mqttReceivedMessage.topic == 'smarthome/temp') {
-        humidity.value = payLoad;
       }
     };
 //connectAndListen();
@@ -88,24 +90,29 @@ class HomeController extends BaseController {
   Future<void> initData() async {
     showLoadingDialog();
     userData.value = await homeUseCase.getUserData();
+    /*roomList.value =*/
+    await homeUseCase.getRoomList();
     hideDialog();
 
     await MQTTHelper().initialize();
 
-    MQTTHelper().subscribeToTopic('smarthome/led');
-    MQTTHelper().subscribeToTopic('smarthome/watertree');
-    MQTTHelper().subscribeToTopic('smarthome/humidity');
-    MQTTHelper().subscribeToTopic('smarthome/temp');
-    MQTTHelper().subscribeToTopic('smarthome/cooling');
+    MQTTHelper().subscribeToTopic('smarthome');
     //await homeUseCase.getRoomList();
     //print('$roomList');
   }
 
   void onTapLogout() {
-    showConfirmDialog(title: 'logout'.tr,message: 'logout_confirm_message'.tr, onConfirm: (){
-      Get.offNamed(Routes.LOGIN);
-      StorageHelper.clearUserLogin();
-      MQTTHelper().client.disconnect();
-    });
+    showConfirmDialog(
+        title: 'logout'.tr,
+        message: 'logout_confirm_message'.tr,
+        onConfirm: logout);
+  }
+
+  Future<void> logout() async {
+    showLoadingDialog();
+    await StorageHelper.clearUserLogin();
+    MQTTHelper().client.disconnect();
+    hideDialog();
+    Get.offNamed(RouteList.LOGIN);
   }
 }

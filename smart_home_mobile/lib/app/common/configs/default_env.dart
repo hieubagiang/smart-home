@@ -3,7 +3,7 @@ import 'env.dart';
 
 class DefaultConfig extends EnvConfig {
   final _splashScreenSecondTimeOut = 2;
-  final _host = 'http://128.199.168.81:8089/';
+  final _host = 'http://hieuit.me:8080/';
   final _baseImageUrl = 'statics/';
   final _productImageUrl = 'host/';
   final _environment = 'dev';

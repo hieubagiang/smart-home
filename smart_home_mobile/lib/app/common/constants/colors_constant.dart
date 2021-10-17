@@ -6,6 +6,8 @@ class ColorUtils {
   static const Color secondaryColor = Color(0xFFECF3F9);
   static const Color thirdColor = Color(0xffa3a3a3);
   static const Color fourthColor = Color(0xFFe3f2fd);
+  static const Color backgroundColor = paleGrey;
+  static const Color paleGrey = Color(0xffF5F5F5);
 
   static const Color activeColor = Color(0xff4CAF50);
   static const Color accentColor = Color(0xff80D321);

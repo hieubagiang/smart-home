@@ -64,8 +64,8 @@ class _DeviceCardState extends State<DeviceCard> {
                 ? Image.asset(
               IconConstants.waterHeaterIcon,
               color: ColorUtils.whiteColor,
-              height: HeightUtils.iconSizeLarge,
-              width: HeightUtils.iconSizeLarge,
+              height: SizeUtils.iconSizeLarge,
+              width: SizeUtils.iconSizeLarge,
             )
                 : Icon(model.icon,
                 color: model.isEnable ? Colors.white : Color(0xffa3a3a3)),
@@ -138,7 +138,7 @@ class _DeviceCardState extends State<DeviceCard> {
     return IconButton(
       icon: Icon(
         Icons.add,
-        size: HeightUtils.iconSizeLarge,
+        size: SizeUtils.iconSizeLarge,
       ),
       color: ColorUtils.primaryColor,
       onPressed: () {
