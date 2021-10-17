@@ -69,7 +69,7 @@ class LoginController extends BaseController {
       StorageHelper.setDataUser(loginEntity.toModel());
       StorageHelper.setLoginId(controllerEmail.text);
 
-      Get.offAndToNamed(RouteList.HOME);
+      Get.offAndToNamed(RouteList.MAIN);
   }
   }
 

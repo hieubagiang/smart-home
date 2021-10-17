@@ -105,10 +105,14 @@ class HomeController extends BaseController {
     showConfirmDialog(
         title: 'logout'.tr,
         message: 'logout_confirm_message'.tr,
-        onConfirm: () {
-          Get.offNamed(RouteList.LOGIN);
-          StorageHelper.clearUserLogin();
-          MQTTHelper().client.disconnect();
-        });
+        onConfirm: logout);
+  }
+
+  Future<void> logout() async {
+    showLoadingDialog();
+    await StorageHelper.clearUserLogin();
+    MQTTHelper().client.disconnect();
+    hideDialog();
+    Get.offNamed(RouteList.LOGIN);
   }
 }

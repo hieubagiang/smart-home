@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:smart_home/app/common/constants/colors_constant.dart';
 import 'package:smart_home/app/common/constants/layout_constant.dart';
 import 'package:smart_home/app/common/utils/styles.dart';
+import 'package:smart_home/app/presentation/journey/home_module/home_controller.dart';
 import 'package:smart_home/app/presentation/journey/profile/profile_controller.dart';
 import 'package:smart_home/app/presentation/journey/profile/widgets/avatar_widget.dart';
 import 'package:smart_home/app/presentation/journey/profile/widgets/menu_item_widget.dart';
@@ -54,7 +55,9 @@ class ProfileScreen extends GetView<ProfileController> {
             MenuItem(
               leading: Icon(Icons.logout),
               title: 'logout'.tr,
-              onTap: () {},
+              onTap: () {
+                Get.find<HomeController>().onTapLogout();
+              },
             ),
           ],
         ),
