@@ -76,6 +76,7 @@ class LocalNotificationHelper {
       icon: notificationIconPath,
       color: ColorUtils.primaryColor,
       vibrationPattern: vibrationPattern,
+      tag: 'temp_alert',
       importance: Importance.max,
       priority: Priority.max,
       sound: RawResourceAndroidNotificationSound(notificationSoundPath)

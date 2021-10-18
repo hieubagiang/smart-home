@@ -23,11 +23,8 @@ class StorageHelper {
   static Future<LoginModel?> getDataUser() async {
     if (box.read(ConstantsUtils.ACCESS_TOKEN_KEY) != null) {
       String accessToken = await box.read(ConstantsUtils.ACCESS_TOKEN_KEY);
-      FunctionUtils.logWhenDebug('StorageHelper', '$accessToken');
-
       return LoginModel.fromJson(jsonDecode(accessToken));
     }
-    FunctionUtils.logWhenDebug('StorageHelper', '${box.read(ConstantsUtils.ACCESS_TOKEN_KEY)}');
 
     return null;
   }
