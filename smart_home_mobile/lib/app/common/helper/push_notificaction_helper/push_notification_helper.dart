@@ -96,12 +96,15 @@ String getNotificationContent(RemoteMessage? message) {
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${getNotificationContent(message)}');
+  print('Handling a background message ${message.data["tag"]}');
+  print('Handling a background message ${NotificationTypeEnum.getNotificationType(
+      message.data["tag"])}');
   if (message.notification != null) {
     LocalNotificationHelper().showNotification(
         title: message.notification?.title ?? '',
         body: message.notification?.body ?? '',
         notificationType: NotificationTypeEnum.getNotificationType(
-                message.notification!.android!.tag) ??
+                message.data["tag"]) ??
             NotificationType.NORMAL);
   }
 }

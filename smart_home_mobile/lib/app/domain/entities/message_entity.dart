@@ -6,12 +6,14 @@ class MessageEntity {
     this.status,
     this.isAuto,
     this.data,
+    this.tag,
   });
 
   int? digitalIo;
   int? status;
   bool? isAuto;
   List<double>? data;
+  String? tag;
 
   MessageEntity copyWith({
     int? digitalIo,
@@ -24,6 +26,7 @@ class MessageEntity {
         status: status ?? this.status,
         isAuto: isAuto ?? this.isAuto,
         data: data ?? this.data,
+        tag: tag ?? this.tag,
       );
 
   factory MessageEntity.parseModel(MessageModel model) {
@@ -32,6 +35,7 @@ class MessageEntity {
       status: model.status,
       isAuto: model.isAuto,
       data: model.data,
+      tag: model.tag,
     );
   }
 

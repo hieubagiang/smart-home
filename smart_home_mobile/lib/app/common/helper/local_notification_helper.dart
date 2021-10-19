@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/common/utils/functions.dart';
 import 'package:smart_home/app/data/enum/type_notification_enum.dart';
 
 const notificationChannel = "Smart Home";
@@ -69,7 +70,7 @@ class LocalNotificationHelper {
     vibrationPattern[1] = 200;
     vibrationPattern[2] = 200;
     vibrationPattern[3] = 200;
-
+    FunctionUtils.logWhenDebug(this, 'notificationType.soundPath = ${notificationType.soundPath}');
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       notificationChannelId,
       notificationChannel,
@@ -77,10 +78,10 @@ class LocalNotificationHelper {
       icon: notificationIconPath,
       color: ColorUtils.primaryColor,
       vibrationPattern: vibrationPattern,
-      tag: 'temp_alert',
+      tag: notificationType.label,
       importance: Importance.max,
       priority: Priority.max,
-      sound: RawResourceAndroidNotificationSound(notificationSoundPath)
+      sound: RawResourceAndroidNotificationSound(notificationType.soundPath??notificationSoundPath)
     );
     IOSNotificationDetails iOSPlatformChannelSpecifics = IOSNotificationDetails(
         presentAlert: true,

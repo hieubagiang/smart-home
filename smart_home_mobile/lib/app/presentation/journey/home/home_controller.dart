@@ -128,9 +128,14 @@ class HomeController extends BaseController {
   void setStatics(double temp, double humidity){
     this.temp.value = temp;
     this.humidity.value = humidity;
+    _sendPushNotification(temp, humidity);
+  }
+
+  void _sendPushNotification(double temp, double humidity) {
     final title = 'Smart Home';
     String body = '';
     String tags='';
+    String? sound;
     final token = PushNotificationHelper().getFcmToken()!;
     if((temp>= 25 && temp <=28) && (humidity >= 65 && humidity<=85)){
       body = 'Nhiệt độ hiện tại là $temp độ, độ ẩm là $humidity%';
@@ -143,33 +148,14 @@ class HomeController extends BaseController {
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
           StaticsType.TEMPERATURE, temp)
           .label;
+      sound = NotificationType.ALERT.soundPath;
     }
     if(humidity>85 || humidity<65){
       body = 'Cảnh báo độ ẩm vượt ngưỡng $humidity%';
-      final noticationType = NotificationTypeEnum.getNotificationTypeFromMessage(
-    StaticsType.HUMIDITY, humidity);
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
           StaticsType.HUMIDITY, humidity)
           .label;
-      sound: 'red_alert';t
-
-      mainUseCase.sendPushNotification(PushNotificationRequest(
-          priority: 'HIGH',
-          to: token,
-          data: PushNotificationDataRequest(
-            title: 'Smart Home',
-            body: 'Cảnh báo độ ẩm vượt ngưỡng $temp%',
-            tag: 'humidity_alert',
-            priority: 2,
-            clickAction: 'FLUTTER_NOTIFICATION_CLICK',
-          ),
-          notification: NotificationRequest(
-              title: 'Smart Home',
-              body: 'Cảnh báo độ ẩm vượt ngưỡng $temp%',
-              tag: 'humidity_alert',
-              sound: 'red_alert'
-          )
-      ));
+      sound = NotificationType.ALERT.soundPath;
     }
     mainUseCase.sendPushNotification(PushNotificationRequest(
         priority: 'HIGH',
@@ -184,6 +170,7 @@ class HomeController extends BaseController {
           title: title,
           body: body,
           tag: tags,
+          sound: sound
         )
     ));
   }

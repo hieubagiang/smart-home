@@ -9,7 +9,8 @@ class MessageModel {
     this.status,
     this.digitalIo,
     this.isAuto,
-    this.data
+    this.data,
+    this.tag
   });
 
   @JsonKey(name: 'status')
@@ -20,13 +21,16 @@ class MessageModel {
   final bool? isAuto;
   @JsonKey(name: 'data')
   final List<double>? data;
+  @JsonKey(name: 'tag')
+  final String? tag;
 
   factory MessageModel.parseEntity(MessageEntity entity) {
     return MessageModel(
-        digitalIo:entity.digitalIo,
+      digitalIo: entity.digitalIo,
       status: entity.status,
       isAuto: entity.isAuto,
       data: entity.data,
+      tag: entity.tag,
     );
   }
 

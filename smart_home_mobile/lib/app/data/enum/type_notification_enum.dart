@@ -1,31 +1,14 @@
+import 'package:smart_home/app/common/utils/functions.dart';
 import 'package:smart_home/app/data/enum/statics_enum.dart';
 enum NotificationType { STATICS, NORMAL, ALERT }
 
 class NotificationTypeEnum {
-  static NotificationType? getNotificationType(dynamic inputValue) {
-    if (inputValue == null) {
-      return null;
-    }
-    if (inputValue is String) {
-      return NotificationType.values
-          .where((value) => '${value.label}' == '$value')
-          .first;
-    }
-    return NotificationType.values.where((value) => value.id == inputValue).first;
+  static NotificationType? getNotificationType(String inputValue) {
+    return NotificationType.values.where((value) => value.label == inputValue).first;
   }
 
   static NotificationType? getNotificationTypeFrom(String value) {}
 
-  static String getSoundPath(double value) {
-    switch (getNotificationType(value) ?? NotificationType.STATICS) {
-      case NotificationType.NORMAL:
-        return 'normal';
-      case NotificationType.ALERT:
-        return 'red_alert';
-      case NotificationType.STATICS:
-        return '';
-    }
-  }
 
   static NotificationType getNotificationTypeFromMessage(
       StaticsType staticsType, double value) {
@@ -99,6 +82,16 @@ extension NotificationTypeExtension on NotificationType {
         case NotificationType.ALERT:
         return '${staticsType.label} vượt ngưỡng an toàn: $value độ';
       default:
+        return '';
+    }
+  }
+  String? get soundPath {
+    switch (this) {
+      case NotificationType.NORMAL:
+        return 'normal';
+      case NotificationType.ALERT:
+        return 'red_alert';
+      case NotificationType.STATICS:
         return '';
     }
   }

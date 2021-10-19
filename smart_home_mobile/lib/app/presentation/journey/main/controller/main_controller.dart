@@ -31,12 +31,17 @@ class MainController extends BaseController {
       final title = message.notification?.title ?? '';
       final body = message.notification?.body ?? '';
       final notificationType = NotificationTypeEnum.getNotificationType(
-              message.notification!.android!.tag) ??
+          message.data["tag"]) ??
           NotificationType.NORMAL;
+      FunctionUtils.logWhenDebug(this, 'onMessage: $notificationType');
+      print('Handling a background message ${message.data["tag"]}');
+      print('Handling a background message ${NotificationTypeEnum.getNotificationType(
+          message.data["tag"])}');
+
       LocalNotificationHelper().showNotification(
           title: message.notification?.title ?? '',
           body: message.notification?.body ?? '',
-          notificationType: notificationType);
+          notificationType: notificationType,);
       if (notificationType == NotificationType.ALERT) {
         FunctionUtils.showSnackBar(title, body,
             colorText: ColorUtils.whiteColor,
