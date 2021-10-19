@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:smart_home/app/common/utils/functions.dart';
-import 'package:smart_home/app/domain/repositories/firebase_restful_api_repository.dart';
+import 'package:smart_home/app/data/enum/type_notification_enum.dart';
 
 import '../local_notification_helper.dart';
 
@@ -14,6 +14,7 @@ class PushNotificationHelper {
   String? _payLoad;
   static final PushNotificationHelper _singleton =
       PushNotificationHelper._internal();
+  Function(RemoteMessage)? onMessage;
 
   factory PushNotificationHelper() {
     return _singleton;
@@ -45,15 +46,8 @@ class PushNotificationHelper {
         _payLoad = jsonEncode(initMessage);
       }
 
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        _payLoad = getNotificationContent(message);
-        FunctionUtils.logWhenDebug(this, 'onMessage: $_payLoad');
-        if (message.notification != null) {
-          LocalNotificationHelper().showNotification(
-              title: message.notification?.title ?? '',
-              body: message.notification?.body ?? '');
-        }
-      });
+      FirebaseMessaging.onMessage
+          .listen((RemoteMessage message) => onMessage?.call(message) /**/);
       FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
         _payLoad = getNotificationContent(message);
@@ -84,6 +78,8 @@ String getNotificationContent(RemoteMessage? message) {
     'notification': {
       'title': message.notification?.title,
       'body': message.notification?.body,
+      'sound': message.notification?.android?.sound,
+      'tag': message.notification?.android?.tag
     },
     'data': message.data,
     'message_type': message.messageType,
@@ -100,5 +96,13 @@ String getNotificationContent(RemoteMessage? message) {
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${getNotificationContent(message)}');
+  if (message.notification != null) {
+    LocalNotificationHelper().showNotification(
+        title: message.notification?.title ?? '',
+        body: message.notification?.body ?? '',
+        notificationType: NotificationTypeEnum.getNotificationType(
+                message.notification!.android!.tag) ??
+            NotificationType.NORMAL);
+  }
 }
 

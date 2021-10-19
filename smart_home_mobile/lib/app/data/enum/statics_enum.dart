@@ -1,3 +1,5 @@
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+
 class StaticsTypeEnum {
   static StaticsType? getStaticsType(int? id) {
     if (id == null) {
@@ -31,9 +33,9 @@ extension StaticsTypeExtension on StaticsType {
   String get label {
     switch (this) {
       case StaticsType.TEMPERATURE:
-        return 'TEMPERATURE';
+        return 'Nhiệt độ';
       case StaticsType.HUMIDITY:
-        return 'HUMIDITY';
+        return 'Độ ẩm';
       default:
         return '';
     }

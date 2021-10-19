@@ -25,5 +25,6 @@ final Map<String, String> enUs = {
   'about_me':"About me",
   "rate_me" :"Rate app",
   "room_management":"Room management",
-  "some_thing_went_wrong":"Some thing went wrong."
+  "some_thing_went_wrong":"Some thing went wrong.",
+  'temperature':'Temperature'
 };

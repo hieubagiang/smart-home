@@ -1,21 +1,38 @@
 import 'package:smart_home/app/data/enum/statics_enum.dart';
-import 'package:smart_home/app/domain/requests/push_notification/notification_request.dart';
-import 'package:smart_home/app/domain/requests/push_notification/push_notification_data_request.dart';
-import 'package:smart_home/app/domain/requests/push_notification/push_notification_request.dart';
+enum NotificationType { STATICS, NORMAL, ALERT }
 
 class NotificationTypeEnum {
-  static NotificationType? getNotificationType(int? id) {
-    if (id == null) {
+  static NotificationType? getNotificationType(dynamic inputValue) {
+    if (inputValue == null) {
       return null;
     }
-    return NotificationType.values.where((value) => value.id == id).first;
+    if (inputValue is String) {
+      return NotificationType.values
+          .where((value) => '${value.label}' == '$value')
+          .first;
+    }
+    return NotificationType.values.where((value) => value.id == inputValue).first;
   }
 
-  static NotificationType? getNotificationTypeFromMessage(StaticsType staticsType,int value) {
+  static NotificationType? getNotificationTypeFrom(String value) {}
+
+  static String getSoundPath(double value) {
+    switch (getNotificationType(value) ?? NotificationType.STATICS) {
+      case NotificationType.NORMAL:
+        return 'normal';
+      case NotificationType.ALERT:
+        return 'red_alert';
+      case NotificationType.STATICS:
+        return '';
+    }
+  }
+
+  static NotificationType getNotificationTypeFromMessage(
+      StaticsType staticsType, double value) {
     if (staticsType == StaticsType.TEMPERATURE) {
-      if(value>= 25 && value <=28){
+      if (value >= 25 && value <= 28) {
         return NotificationType.STATICS;
-     /*   final title = 'Smart Home';
+        /*   final title = 'Smart Home';
         final body = 'Nhiệt độ hiện tại là $value độ';
         final tag = '${NotificationType.STATICS.id}';
         PushNotificationRequest(
@@ -35,17 +52,18 @@ class NotificationTypeEnum {
         );*/
       }
       return NotificationType.ALERT;
-    }else if(staticsType == StaticsType.HUMIDITY){
-
+    } else if (staticsType == StaticsType.HUMIDITY) {
+      if (value < 65 || value > 85) {
+        return NotificationType.ALERT;
+      }
     }
-
+    return NotificationType.NORMAL;
   }
 }
 
-enum NotificationType { STATICS, NORMAL, ALERT }
 
 extension NotificationTypeExtension on NotificationType {
-  int get id {
+  double get id {
     switch (this) {
       case NotificationType.STATICS:
         return 1;
@@ -70,4 +88,20 @@ extension NotificationTypeExtension on NotificationType {
         return '';
     }
   }
+
+
+  String getMessage(StaticsType staticsType, String value) {
+    switch (this) {
+      case NotificationType.STATICS:
+        return '${staticsType.label} hiện tại là $value độ';
+      case NotificationType.NORMAL:
+        return 'NORMAL';
+        case NotificationType.ALERT:
+        return '${staticsType.label} vượt ngưỡng an toàn: $value độ';
+      default:
+        return '';
+    }
+  }
+
+
 }

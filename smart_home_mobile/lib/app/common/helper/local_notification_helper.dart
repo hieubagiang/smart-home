@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:smart_home/app/common/constants/colors_constant.dart';
+import 'package:smart_home/app/data/enum/type_notification_enum.dart';
 
 const notificationChannel = "Smart Home";
 const notificationChannelId = "smart_home_global_channel";
@@ -62,7 +63,7 @@ class LocalNotificationHelper {
   }
 
   Future<void> showNotification(
-      {required String title, required String body, String? payload}) async {
+      {required String title, required String body, String? payload,required NotificationType notificationType}) async {
     var vibrationPattern = Int64List(4);
     vibrationPattern[0] = 0;
     vibrationPattern[1] = 200;
@@ -76,6 +77,7 @@ class LocalNotificationHelper {
       icon: notificationIconPath,
       color: ColorUtils.primaryColor,
       vibrationPattern: vibrationPattern,
+      tag: 'temp_alert',
       importance: Importance.max,
       priority: Priority.max,
       sound: RawResourceAndroidNotificationSound(notificationSoundPath)
