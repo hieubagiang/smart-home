@@ -1,14 +1,36 @@
-import 'package:smart_home/app/common/utils/functions.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:smart_home/app/data/enum/statics_enum.dart';
+
+///Config Channel
+///
+const defaultNotificationChannel = "Chung";
+const defaultNotificationChannelId = "smart_home_global_channel";
+const defaultNotificationChannelDescription =
+    "Channel for default notification";
+const notificationIconPath = '@mipmap/ic_launcher';
+const defaultNotificationSoundPath = 'normal';
+
+const staticsNotificationChannel = "Thống kê dữ liệu";
+const staticsNotificationChannelId = "smart_home_statics_channel";
+const staticsNotificationChannelDescription =
+    "Channel for statics notification";
+const staticsNotificationSoundPath = '';
+
+const alertNotificationChannel = "Cảnh báo";
+const alertNotificationChannelId = "smart_home_alert_channel";
+const alertNotificationChannelDescription = "Channel for alert notification";
+const alertNotificationSoundPath = 'red_alert';
+
 enum NotificationType { STATICS, NORMAL, ALERT }
 
 class NotificationTypeEnum {
   static NotificationType? getNotificationType(String inputValue) {
-    return NotificationType.values.where((value) => value.label == inputValue).first;
+    return NotificationType.values
+        .where((value) => value.label == inputValue)
+        .first;
   }
 
   static NotificationType? getNotificationTypeFrom(String value) {}
-
 
   static NotificationType getNotificationTypeFromMessage(
       StaticsType staticsType, double value) {
@@ -43,7 +65,6 @@ class NotificationTypeEnum {
     return NotificationType.NORMAL;
   }
 }
-
 
 extension NotificationTypeExtension on NotificationType {
   double get id {
@@ -85,16 +106,58 @@ extension NotificationTypeExtension on NotificationType {
         return '';
     }
   }
+
   String? get soundPath {
     switch (this) {
       case NotificationType.NORMAL:
-        return 'normal';
+        return defaultNotificationSoundPath;
       case NotificationType.ALERT:
-        return 'red_alert';
+        return alertNotificationSoundPath;
       case NotificationType.STATICS:
-        return '';
+        return staticsNotificationSoundPath;
     }
   }
 
+  String get notificationId {
+    switch (this) {
+      case NotificationType.NORMAL:
+        return defaultNotificationChannelId;
+      case NotificationType.ALERT:
+        return alertNotificationChannelId;
+      case NotificationType.STATICS:
+        return staticsNotificationChannelId;
+    }
+  }
 
+  String get notificationChannel {
+    switch (this) {
+      case NotificationType.NORMAL:
+        return defaultNotificationChannel;
+      case NotificationType.ALERT:
+        return alertNotificationChannel;
+      case NotificationType.STATICS:
+        return staticsNotificationChannel;
+    }
+  }
+
+  String get notificationChannelDescription {
+    switch (this) {
+      case NotificationType.NORMAL:
+        return defaultNotificationChannelDescription;
+      case NotificationType.ALERT:
+        return alertNotificationChannelDescription;
+      case NotificationType.STATICS:
+        return staticsNotificationChannelDescription;
+    }
+  }
+  Importance get importance {
+    switch (this) {
+      case NotificationType.NORMAL:
+        return Importance.high;
+      case NotificationType.ALERT:
+        return Importance.max;
+      case NotificationType.STATICS:
+        return Importance.low;
+    }
+  }
 }

@@ -5,11 +5,13 @@ import 'package:smart_home/app/common/constants/colors_constant.dart';
 import 'package:smart_home/app/common/utils/functions.dart';
 import 'package:smart_home/app/data/enum/type_notification_enum.dart';
 
-const notificationChannel = "Smart Home";
-const notificationChannelId = "smart_home_global_channel";
-const notificationChannelDescription = "Channel for notification";
+const defaultNotificationChannel = "Chung";
+const defaultNotificationChannelId = "smart_home_global_channel";
+const defaultNotificationChannelDescription =
+    "Channel for default notification";
 const notificationIconPath = '@mipmap/ic_launcher';
-const notificationSoundPath = 'red_alert';
+const defaultNotificationSoundPath = 'normal';
+
 
 class LocalNotificationHelper {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -29,15 +31,44 @@ class LocalNotificationHelper {
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: selectNotification);
 
-    _createNotificationChannel();
+    _createNotificationChannel(
+        id: defaultNotificationChannelId,
+        channelName: defaultNotificationChannel,
+        description: defaultNotificationChannelDescription,
+        soundPath: defaultNotificationSoundPath,
+        importance: Importance.high);
+    _createNotificationChannel(
+        id: staticsNotificationChannelId,
+        channelName: staticsNotificationChannel,
+        description: staticsNotificationChannelDescription,
+        soundPath: staticsNotificationSoundPath,
+        importance: Importance.low);
+    _createNotificationChannel(
+        id: alertNotificationChannelId,
+        channelName: alertNotificationChannel,
+        description: alertNotificationChannelDescription,
+        soundPath: alertNotificationSoundPath,
+        importance: Importance.max);
   }
 
-  void _createNotificationChannel() async {
+  void _createNotificationChannel(
+      {required String id,
+      required String channelName,
+      required String description,
+      String? soundPath,
+      Int64List? vibrationPattern,
+      Importance? importance}) async {
     var androidNotificationChannel = AndroidNotificationChannel(
-      notificationChannelId,
-      notificationChannel,
-      notificationChannelDescription,
+      id,
+      channelName,
+      description,
+      playSound: soundPath?.isNotEmpty ?? false,
+      sound: RawResourceAndroidNotificationSound(soundPath),
+      enableLights: soundPath?.isNotEmpty ?? false,
+      vibrationPattern: vibrationPattern,
+      importance: importance ?? Importance.high,
     );
+
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
@@ -70,19 +101,21 @@ class LocalNotificationHelper {
     vibrationPattern[1] = 200;
     vibrationPattern[2] = 200;
     vibrationPattern[3] = 200;
-    FunctionUtils.logWhenDebug(this, 'notificationType.soundPath = ${notificationType.soundPath}');
+    FunctionUtils.logWhenDebug(
+        this, 'notificationType.soundPath = ${notificationType.soundPath}');
+
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      notificationChannelId,
-      notificationChannel,
-      notificationChannelDescription,
+      notificationType.notificationId,
+      notificationType.notificationChannel,
+      notificationType.notificationChannelDescription,
       icon: notificationIconPath,
       color: ColorUtils.primaryColor,
       vibrationPattern: vibrationPattern,
       tag: notificationType.label,
-      importance: Importance.max,
       priority: Priority.max,
-      sound: RawResourceAndroidNotificationSound(notificationType.soundPath??notificationSoundPath)
     );
+
+    //todo handle for ios
     IOSNotificationDetails iOSPlatformChannelSpecifics = IOSNotificationDetails(
         presentAlert: true,
         // Present an alert when the notification is displayed and the application is in the foreground (only from iOS 10 onwards)

@@ -42,11 +42,6 @@ class MainController extends BaseController {
           title: message.notification?.title ?? '',
           body: message.notification?.body ?? '',
           notificationType: notificationType,);
-      if (notificationType == NotificationType.ALERT) {
-        FunctionUtils.showSnackBar(title, body,
-            colorText: ColorUtils.whiteColor,
-            backgroundColor: ColorUtils.redNotiColor);
-      }
     }
   }
 }

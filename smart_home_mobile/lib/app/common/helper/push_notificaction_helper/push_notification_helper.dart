@@ -29,7 +29,7 @@ class PushNotificationHelper {
     await FirebaseMessaging.instance
         .setForegroundNotificationPresentationOptions(
       alert: true,
-      badge: true,
+      badge: false,
       sound: true,
     );
   }
@@ -100,12 +100,14 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print('Handling a background message ${NotificationTypeEnum.getNotificationType(
       message.data["tag"])}');
   if (message.notification != null) {
+/*
     LocalNotificationHelper().showNotification(
         title: message.notification?.title ?? '',
         body: message.notification?.body ?? '',
         notificationType: NotificationTypeEnum.getNotificationType(
                 message.data["tag"]) ??
             NotificationType.NORMAL);
+*/
   }
 }
 
