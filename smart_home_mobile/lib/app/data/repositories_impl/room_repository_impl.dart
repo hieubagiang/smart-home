@@ -18,21 +18,19 @@ class RoomRepositoryImpl implements RoomRepository {
 
   @override
   Future<bool> addRoom(
-      {required String accessToken,
-        required EditDeviceRequest request}) async {
+      {required String accessToken, required EditDeviceRequest request}) async {
     String authorization = Configurations.getBearerAuth(accessToken);
-    final response =
-    await roomApi.addRoom(authorization, request.toJson());
-    return response==1;
+    final response = await roomApi.addRoom(authorization, request.toJson());
+    return response == 1;
   }
 
-
   @override
-  Future<bool> deleteRoom({required String accessToken, required String roomId}) async {
+  Future<bool> deleteRoom(
+      {required String accessToken, required String roomId}) async {
     String authorization = Configurations.getBearerAuth(accessToken);
-    final response =
-        await roomApi.deleteRoom(authorization, roomId);
-    return response==1;  }
+    final response = await roomApi.deleteRoom(authorization, roomId);
+    return response == 1;
+  }
 
   @override
   Future<bool> editRoom(
@@ -42,6 +40,6 @@ class RoomRepositoryImpl implements RoomRepository {
     String authorization = Configurations.getBearerAuth(accessToken);
     final response =
         await roomApi.editRoom(authorization, roomId, request.toJson());
-    return response==1;
+    return response == 1;
   }
 }

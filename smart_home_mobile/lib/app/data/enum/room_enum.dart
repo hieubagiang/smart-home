@@ -28,6 +28,7 @@ extension RoomTypeExtension on RoomType {
         return -1;
     }
   }
+
   String get label {
     switch (this) {
       case RoomType.LIVING_ROOM:

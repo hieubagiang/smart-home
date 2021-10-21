@@ -13,5 +13,4 @@ abstract class UserApi {
   @GET(UrlConstants.userInfo)
   Future<UserModel> getUserInfo(
       @Header(Configurations.authentication) String authorization);
-
 }

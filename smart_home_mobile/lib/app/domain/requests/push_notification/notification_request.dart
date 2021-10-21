@@ -1,8 +1,8 @@
-import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 
 part 'notification_request.g.dart';
+
 @JsonSerializable()
 class NotificationRequest {
   NotificationRequest({
@@ -33,7 +33,7 @@ class NotificationRequest {
         sound: sound ?? this.sound,
         tag: tag ?? this.tag,
       );
-  
+
   factory NotificationRequest.fromJson(Map<String, dynamic> json) =>
       _$NotificationRequestFromJson(json);
 

@@ -12,7 +12,6 @@ const defaultNotificationChannelDescription =
 const notificationIconPath = '@mipmap/ic_launcher';
 const defaultNotificationSoundPath = 'normal';
 
-
 class LocalNotificationHelper {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
@@ -95,7 +94,10 @@ class LocalNotificationHelper {
   }
 
   Future<void> showNotification(
-      {required String title, required String body, String? payload,required NotificationType notificationType}) async {
+      {required String title,
+      required String body,
+      String? payload,
+      required NotificationType notificationType}) async {
     var vibrationPattern = Int64List(4);
     vibrationPattern[0] = 0;
     vibrationPattern[1] = 200;

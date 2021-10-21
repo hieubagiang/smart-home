@@ -7,11 +7,11 @@ class UserRepositoryImpl implements UserRepository {
   final UserApi userApi;
 
   UserRepositoryImpl(this.userApi);
+
   @override
   Future<UserModel> getUserData(String accessToken) async {
     String authorization = Configurations.getBearerAuth(accessToken);
     final response = await userApi.getUserInfo(authorization);
     return response;
   }
-
 }

@@ -10,6 +10,7 @@ class ConstantsUtils {
   static const int IMAGE_LARGE_MAX_WIDTH = 1600;
   static const int IMAGE_SMALL_MAX_WIDTH = 400;
   static const int IMAGE_QUALITY = 80;
+
   //LOGIN
   static const String ACCESS_TOKEN_KEY = 'ACCESS_TOKEN_KEY';
   static const String LOGIN_ID_KEY = 'LOGIN_ID';

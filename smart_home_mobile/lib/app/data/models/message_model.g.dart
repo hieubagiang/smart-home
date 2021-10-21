@@ -14,6 +14,7 @@ MessageModel _$MessageModelFromJson(Map<String, dynamic> json) {
     data: (json['data'] as List<dynamic>?)
         ?.map((e) => (e as num).toDouble())
         .toList(),
+    tag: json['tag'] as String?,
   );
 }
 
@@ -23,4 +24,5 @@ Map<String, dynamic> _$MessageModelToJson(MessageModel instance) =>
       'digitalIo': instance.digitalIo,
       'isAuto': instance.isAuto,
       'data': instance.data,
+      'tag': instance.tag,
     };

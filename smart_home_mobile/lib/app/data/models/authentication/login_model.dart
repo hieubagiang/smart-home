@@ -10,7 +10,6 @@ class LoginModel {
 
   LoginModel({required this.accessToken});
 
-
   factory LoginModel.parseEntity(LoginEntity entity) {
     return LoginModel(accessToken: entity.accessToken);
   }

@@ -1,6 +1,4 @@
-
 import 'package:smart_home/app/common/configs/env.dart';
-
 
 class StageConfig extends EnvConfig {
   final _splashScreenSecondTimeOut = 2;

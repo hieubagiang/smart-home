@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 class ApnsFcmOptions {
@@ -19,17 +18,18 @@ class ApnsFcmOptions {
         image: image ?? this.image,
       );
 
-  factory ApnsFcmOptions.fromRawJson(String str) => ApnsFcmOptions.fromJson(json.decode(str));
+  factory ApnsFcmOptions.fromRawJson(String str) =>
+      ApnsFcmOptions.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
   factory ApnsFcmOptions.fromJson(Map<String, dynamic> json) => ApnsFcmOptions(
-    analyticsLabel: json["analytics_label"],
-    image: json["image"],
-  );
+        analyticsLabel: json["analytics_label"],
+        image: json["image"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "analytics_label": analyticsLabel,
-    "image": image,
-  };
+        "analytics_label": analyticsLabel,
+        "image": image,
+      };
 }

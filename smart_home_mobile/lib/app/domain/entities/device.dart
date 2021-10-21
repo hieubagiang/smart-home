@@ -42,13 +42,15 @@ class Device {
   void pushDeviceStatus() {
     if (this.topic != null && this.topic!.isNotEmpty) {
       FunctionUtils.logWhenDebug(this, 'this.topic====> true =$this');
-      MQTTHelper().publishToTopic(this.topic!, '${jsonEncode(getPushMessage().toJson())}');
+      MQTTHelper().publishToTopic(
+          this.topic!, '${jsonEncode(getPushMessage().toJson())}');
     } else {
       FunctionUtils.logWhenDebug(this, 'this.topic false =$this');
     }
   }
 
   bool get isEnable => this.status == 1;
+
   @override
   String toString() {
     return 'Device{id: $id, title: $title, subtitle: $subtitle, leftIcon: $icon, status: $status, topic: $topic, isAuto: $isAuto}';

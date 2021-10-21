@@ -14,15 +14,16 @@ class FcmOptions {
         analyticsLabel: analyticsLabel ?? this.analyticsLabel,
       );
 
-  factory FcmOptions.fromRawJson(String str) => FcmOptions.fromJson(json.decode(str));
+  factory FcmOptions.fromRawJson(String str) =>
+      FcmOptions.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
   factory FcmOptions.fromJson(Map<String, dynamic> json) => FcmOptions(
-    analyticsLabel: json["analytics_label"],
-  );
+        analyticsLabel: json["analytics_label"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "analytics_label": analyticsLabel,
-  };
+        "analytics_label": analyticsLabel,
+      };
 }

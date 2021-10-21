@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +6,6 @@ import 'package:smart_home/app/common/constants/colors_constant.dart';
 import 'package:smart_home/app/common/constants/layout_constant.dart';
 import 'package:smart_home/app/common/utils/utils.dart';
 import 'package:smart_home/app/presentation/journey/main/controller/main_controller.dart';
-
-import '../main_screen_constants.dart';
 
 class BottomTabMain extends GetWidget<MainController> {
   final _bottomShadows = BoxShadow(
@@ -21,12 +18,10 @@ class BottomTabMain extends GetWidget<MainController> {
           color: Colors.white,
           border: Border(
               top: BorderSide(
-                color: ColorUtils.thirdColor,
-              ))),
-      padding: EdgeInsets.symmetric(
-          horizontal: SpaceUtils.spaceMedium),
-      child: Obx(() =>
-          BottomNavigationBar(
+            color: ColorUtils.thirdColor,
+          ))),
+      padding: EdgeInsets.symmetric(horizontal: SpaceUtils.spaceMedium),
+      child: Obx(() => BottomNavigationBar(
             showUnselectedLabels: true,
             showSelectedLabels: true,
             type: BottomNavigationBarType.fixed,
@@ -42,18 +37,16 @@ class BottomTabMain extends GetWidget<MainController> {
                 icon: Icon(Icons.home),
                 label: 'home'.tr,
               ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.schedule),
-                  label: 'schedule'.tr,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.notifications),
-                  label: 'notifications'.tr,
-                ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'settings'.tr
+                icon: Icon(Icons.schedule),
+                label: 'schedule'.tr,
               ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.notifications),
+                label: 'notifications'.tr,
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.settings), label: 'settings'.tr),
             ],
           )),
     );

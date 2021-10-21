@@ -20,7 +20,7 @@ class Android {
   final int? priority;
   final String? ttl;
   final String? restrictedPackageName;
-  final Map<String,dynamic>? data;
+  final Map<String, dynamic>? data;
   final AndroidNotificationModel? notification;
   final FcmOptions? fcmOptions;
   final bool? directBootOk;
@@ -30,7 +30,7 @@ class Android {
     int? priority,
     String? ttl,
     String? restrictedPackageName,
-    Map<String,dynamic>? data,
+    Map<String, dynamic>? data,
     AndroidNotificationModel? notification,
     FcmOptions? fcmOptions,
     bool? directBootOk,
@@ -39,7 +39,8 @@ class Android {
         collapseKey: collapseKey ?? this.collapseKey,
         priority: priority ?? this.priority,
         ttl: ttl ?? this.ttl,
-        restrictedPackageName: restrictedPackageName ?? this.restrictedPackageName,
+        restrictedPackageName:
+            restrictedPackageName ?? this.restrictedPackageName,
         data: data ?? this.data,
         notification: notification ?? this.notification,
         fcmOptions: fcmOptions ?? this.fcmOptions,
@@ -51,24 +52,24 @@ class Android {
   String toRawJson() => json.encode(toJson());
 
   factory Android.fromJson(Map<String, dynamic> json) => Android(
-    collapseKey: json["collapse_key"],
-    priority: json["priority"],
-    ttl: json["ttl"],
-    restrictedPackageName: json["restricted_package_name"],
-    data: jsonDecode(json["data"]),
-    notification: AndroidNotificationModel.fromJson(json["notification"]),
-    fcmOptions: FcmOptions.fromJson(json["fcm_options"]),
-    directBootOk: json["direct_boot_ok"],
-  );
+        collapseKey: json["collapse_key"],
+        priority: json["priority"],
+        ttl: json["ttl"],
+        restrictedPackageName: json["restricted_package_name"],
+        data: jsonDecode(json["data"]),
+        notification: AndroidNotificationModel.fromJson(json["notification"]),
+        fcmOptions: FcmOptions.fromJson(json["fcm_options"]),
+        directBootOk: json["direct_boot_ok"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "collapse_key": collapseKey,
-    "priority": priority,
-    "ttl": ttl,
-    "restricted_package_name": restrictedPackageName,
-    "data": json.encode(data),
-    "notification": notification?.toJson(),
-    "fcm_options": fcmOptions?.toJson(),
-    "direct_boot_ok": directBootOk,
-  };
+        "collapse_key": collapseKey,
+        "priority": priority,
+        "ttl": ttl,
+        "restricted_package_name": restrictedPackageName,
+        "data": json.encode(data),
+        "notification": notification?.toJson(),
+        "fcm_options": fcmOptions?.toJson(),
+        "direct_boot_ok": directBootOk,
+      };
 }

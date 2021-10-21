@@ -5,13 +5,7 @@ part 'message_model.g.dart';
 
 @JsonSerializable()
 class MessageModel {
-  MessageModel({
-    this.status,
-    this.digitalIo,
-    this.isAuto,
-    this.data,
-    this.tag
-  });
+  MessageModel({this.status, this.digitalIo, this.isAuto, this.data, this.tag});
 
   @JsonKey(name: 'status')
   final int? status;

@@ -87,10 +87,11 @@ class FunctionUtils {
         fontSize: FontSizeUtils.toastFontSize);
   }
 
-  static void showSnackBar(String title, String message,{Color? backgroundColor,Color? colorText}) {
+  static void showSnackBar(String title, String message,
+      {Color? backgroundColor, Color? colorText}) {
     Get.snackbar(title, message,
-        backgroundColor: backgroundColor??ColorUtils.whiteColor,
-        colorText: colorText??ColorUtils.blackColor,
+        backgroundColor: backgroundColor ?? ColorUtils.whiteColor,
+        colorText: colorText ?? ColorUtils.blackColor,
         boxShadows: [
           BoxShadow(
             color: ColorUtils.secondaryColor.withOpacity(0.2),
@@ -124,8 +125,9 @@ class FunctionUtils {
     }
     return identifier;
   }
+
   static Future<String> getUniqueDeviceId() async {
-    String id='';
+    String id = '';
     final email = await StorageHelper.getLoginId();
     id = '$email' + '_' + '${getDeviceDetails()}';
     return id;

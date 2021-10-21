@@ -62,13 +62,13 @@ class _DeviceCardState extends State<DeviceCard> {
           children: <Widget>[
             model.icon is String
                 ? Image.asset(
-              IconConstants.waterHeaterIcon,
-              color: ColorUtils.whiteColor,
-              height: SizeUtils.iconSizeLarge,
-              width: SizeUtils.iconSizeLarge,
-            )
+                    IconConstants.waterHeaterIcon,
+                    color: ColorUtils.whiteColor,
+                    height: SizeUtils.iconSizeLarge,
+                    width: SizeUtils.iconSizeLarge,
+                  )
                 : Icon(model.icon,
-                color: model.isEnable ? Colors.white : Color(0xffa3a3a3)),
+                    color: model.isEnable ? Colors.white : Color(0xffa3a3a3)),
             FlutterSwitch(
                 width: 60.w,
                 height: 35.h,

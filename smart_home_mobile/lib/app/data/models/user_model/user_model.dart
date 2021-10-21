@@ -13,7 +13,7 @@ class UserModel {
   UserModel({required this.id, required this.name});
 
   factory UserModel.parseEntity(UserEntity entity) {
-    return UserModel(id: entity.id,name: entity.name);
+    return UserModel(id: entity.id, name: entity.name);
   }
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

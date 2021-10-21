@@ -9,10 +9,12 @@ abstract class DeviceRepository {
 
   Future<bool> editDevice(
       {required String accessToken,
-        required String roomId,
-        required String deviceId,
+      required String roomId,
+      required String deviceId,
       required EditDeviceRequest request});
 
   Future<bool> deleteDevice(
-      {required String accessToken,required String roomId ,required String deviceId});
+      {required String accessToken,
+      required String roomId,
+      required String deviceId});
 }

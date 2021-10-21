@@ -132,7 +132,7 @@ class HomePage extends BaseView<HomeController> {
           Expanded(child: _buildWeatherStats())
         ],
       ),
-      );
+    );
   }
 
   Widget _buildWeatherStats() {
@@ -189,32 +189,6 @@ class HomePage extends BaseView<HomeController> {
           ),
         ),
       ],
-    );
-  }
-
-  Container _buildAddDevice() {
-    return Container(
-      height: 120,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
-      decoration: BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                blurRadius: 10, offset: Offset(0, 10), color: Color(0xfff1f0f2))
-          ],
-          color: Colors.white,
-          border: Border.all(
-              width: 1, style: BorderStyle.solid, color: Color(0xffa3a3a3)),
-          borderRadius: BorderRadius.circular(20)),
-      child: FloatingActionButton(
-        backgroundColor: Colors.white,
-        child: Icon(
-          Icons.add,
-          color: Colors.black,
-        ),
-        onPressed: () {
-          //todo add device api
-        },
-      ),
     );
   }
 

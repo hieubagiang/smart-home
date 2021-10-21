@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:smart_home/app/common/configs/configurations.dart';
-import 'package:smart_home/app/common/helper/push_notificaction_helper/model/message.dart';
 import 'package:smart_home/app/data/datasources/remote/push_notification_api.dart';
 import 'package:smart_home/app/domain/repositories/firebase_restful_api_repository.dart';
 import 'package:smart_home/app/domain/requests/push_notification/push_notification_request.dart';

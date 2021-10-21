@@ -5,8 +5,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:smart_home/app/common/utils/functions.dart';
 import 'package:smart_home/app/data/enum/type_notification_enum.dart';
 
-import '../local_notification_helper.dart';
-
 class PushNotificationHelper {
   late FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   Function(String)? handleNotificationTap;
@@ -74,6 +72,7 @@ class PushNotificationHelper {
 
 String getNotificationContent(RemoteMessage? message) {
   if (message == null) return 'RemoteMessage is Null';
+
   final body = {
     'notification': {
       'title': message.notification?.title,
@@ -97,8 +96,8 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${getNotificationContent(message)}');
   print('Handling a background message ${message.data["tag"]}');
-  print('Handling a background message ${NotificationTypeEnum.getNotificationType(
-      message.data["tag"])}');
+  print(
+      'Handling a background message ${NotificationTypeEnum.getNotificationType(message.data["tag"])}');
   if (message.notification != null) {
 /*
     LocalNotificationHelper().showNotification(
@@ -110,4 +109,3 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 */
   }
 }
-

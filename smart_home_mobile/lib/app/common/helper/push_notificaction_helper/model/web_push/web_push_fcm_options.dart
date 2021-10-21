@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 class WebPushFcmOptions {
@@ -19,17 +18,19 @@ class WebPushFcmOptions {
         analyticsLabel: analyticsLabel ?? this.analyticsLabel,
       );
 
-  factory WebPushFcmOptions.fromRawJson(String str) => WebPushFcmOptions.fromJson(json.decode(str));
+  factory WebPushFcmOptions.fromRawJson(String str) =>
+      WebPushFcmOptions.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory WebPushFcmOptions.fromJson(Map<String, dynamic> json) => WebPushFcmOptions(
-    link: json["link"],
-    analyticsLabel: json["analytics_label"],
-  );
+  factory WebPushFcmOptions.fromJson(Map<String, dynamic> json) =>
+      WebPushFcmOptions(
+        link: json["link"],
+        analyticsLabel: json["analytics_label"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "link": link,
-    "analytics_label": analyticsLabel,
-  };
+        "link": link,
+        "analytics_label": analyticsLabel,
+      };
 }

@@ -46,6 +46,7 @@ class DeviceEntity {
   DeviceModel toModel() {
     return DeviceModel.parseEntity(this);
   }
+
   EditDeviceRequest toRequest() {
     return EditDeviceRequest.parseEntity(this);
   }

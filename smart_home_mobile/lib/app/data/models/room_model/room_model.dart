@@ -18,7 +18,11 @@ class RoomModel {
   RoomModel({this.id, this.name, this.roomType, this.devices});
 
   factory RoomModel.parseEntity(RoomEntity entity) {
-    return RoomModel(id: entity.id,name: entity.name,roomType:entity.roomType, devices: entity.devices);
+    return RoomModel(
+        id: entity.id,
+        name: entity.name,
+        roomType: entity.roomType,
+        devices: entity.devices);
   }
 
   factory RoomModel.fromJson(Map<String, dynamic> json) =>

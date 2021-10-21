@@ -28,6 +28,7 @@ extension DeviceTypeExtension on DeviceType {
         return -1;
     }
   }
+
   String get label {
     switch (this) {
       case DeviceType.LED:

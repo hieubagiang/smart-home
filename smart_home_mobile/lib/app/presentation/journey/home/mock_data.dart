@@ -16,7 +16,7 @@ class MockData {
             icon: FontAwesomeIcons.fan,
             status: 0,
             isAuto: true,
-            digitalIo:4,
+            digitalIo: 4,
             topic: 'smarthome'),
       ];
 
@@ -26,7 +26,7 @@ class MockData {
             icon: Icons.lightbulb_outline,
             status: 1,
             isAuto: false,
-            digitalIo:2,
+            digitalIo: 2,
             topic: 'smarthome'),
         Device(
             title: 'Quạt',

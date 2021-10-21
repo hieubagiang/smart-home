@@ -10,15 +10,15 @@ class WebPush {
     this.fcmOptions,
   });
 
-  final Map<String,dynamic>? headers;
-  final Map<String,dynamic>? data;
-  final Map<String,dynamic>? notification;
+  final Map<String, dynamic>? headers;
+  final Map<String, dynamic>? data;
+  final Map<String, dynamic>? notification;
   final WebPushFcmOptions? fcmOptions;
 
   WebPush copyWith({
-    Map<String,dynamic>? headers,
-    Map<String,dynamic>? data,
-    Map<String,dynamic>? notification,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? notification,
     WebPushFcmOptions? fcmOptions,
   }) =>
       WebPush(
@@ -33,17 +33,16 @@ class WebPush {
   String toRawJson() => json.encode(toJson());
 
   factory WebPush.fromJson(Map<String, dynamic> json) => WebPush(
-    headers: jsonDecode(json["headers"]),
-    data: jsonDecode(json["data"]),
-    notification: jsonDecode(json["notification"]),
-    fcmOptions: WebPushFcmOptions.fromJson(json["fcm_options"]),
-  );
+        headers: jsonDecode(json["headers"]),
+        data: jsonDecode(json["data"]),
+        notification: jsonDecode(json["notification"]),
+        fcmOptions: WebPushFcmOptions.fromJson(json["fcm_options"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "headers": jsonEncode(headers),
-    "data": jsonEncode(data),
-    "notification": jsonEncode(notification),
-    "fcm_options": fcmOptions?.toJson(),
-  };
+        "headers": jsonEncode(headers),
+        "data": jsonEncode(data),
+        "notification": jsonEncode(notification),
+        "fcm_options": fcmOptions?.toJson(),
+      };
 }
-

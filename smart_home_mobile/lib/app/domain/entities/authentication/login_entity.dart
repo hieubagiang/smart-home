@@ -6,9 +6,11 @@ class LoginEntity {
   LoginEntity({
     required this.accessToken,
   });
+
   factory LoginEntity.parseModel(LoginModel model) {
     return LoginEntity(accessToken: model.accessToken);
   }
+
   LoginModel toModel() {
     return LoginModel.parseEntity(this);
   }

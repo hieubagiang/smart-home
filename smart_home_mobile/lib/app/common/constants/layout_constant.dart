@@ -61,11 +61,10 @@ class SizeUtils {
   static final double iconSizeExtraLarge = 36.w;
   static final double floatingButtonSize = 56.w;
   static final double avatarSize = 80.w;
-
 }
+
 class LayoutConstants {
   static final paddingHorizontalSmall = SpaceUtils.spaceSmall;
   static final paddingHorizontalApp = SpaceUtils.spaceMedium;
   static final paddingVerticalApp = SpaceUtils.spaceMedium;
-
 }

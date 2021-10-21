@@ -10,7 +10,6 @@ abstract class AuthenticationApi {
   factory AuthenticationApi(Dio dio) = _AuthenticationApi;
 
   @POST(UrlConstants.loginUrl)
-
   Future<LoginModel> login(@Body() Map<String, dynamic> map);
 /*  @POST('/oauth/token')
 

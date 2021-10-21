@@ -1,4 +1,4 @@
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+
 
 class StaticsTypeEnum {
   static StaticsType? getStaticsType(int? id) {
@@ -16,7 +16,7 @@ class StaticsTypeEnum {
   }
 }
 
-enum StaticsType { TEMPERATURE, HUMIDITY  }
+enum StaticsType { TEMPERATURE, HUMIDITY }
 
 extension StaticsTypeExtension on StaticsType {
   int get id {

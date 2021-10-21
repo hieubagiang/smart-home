@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'default_env.dart';
 import 'env.dart';
 
-
 class Configurations {
   static EnvConfig _environment = DefaultConfig();
   static const int connectTimeout = 30000;

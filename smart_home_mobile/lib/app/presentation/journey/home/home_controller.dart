@@ -77,24 +77,25 @@ class HomeController extends BaseController {
           MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
       if (mqttReceivedMessage.topic == 'smarthome') {
         print('recevied: $payLoad');
-        final messageEntity = MessageEntity.parseModel(MessageModel.fromJson(jsonDecode(payLoad)));
+        final messageEntity = MessageEntity.parseModel(
+            MessageModel.fromJson(jsonDecode(payLoad)));
         this.roomList.forEach((roomEntity) {
           roomEntity.changeDeviceStatus(messageEntity);
         });
-        setStatics(messageEntity.data?[0]??this.temp.value,messageEntity.data?[1]??this.humidity.value);
+        setStatics(messageEntity.data?[0] ?? this.temp.value,
+            messageEntity.data?[1] ?? this.humidity.value);
         roomList.refresh();
       }
     };
 //connectAndListen();
   }
 
-  void onReady(){
+  void onReady() {
     super.onReady();
     initData();
+  }
 
-  }
-  void connectAndListen() {
-  }
+  void connectAndListen() {}
 
   Future<void> initData() async {
     showLoadingDialog();
@@ -125,7 +126,7 @@ class HomeController extends BaseController {
     Get.offNamed(RouteList.LOGIN);
   }
 
-  void setStatics(double temp, double humidity){
+  void setStatics(double temp, double humidity) {
     this.temp.value = temp;
     this.humidity.value = humidity;
     _sendPushNotification(temp, humidity);
@@ -134,28 +135,28 @@ class HomeController extends BaseController {
   void _sendPushNotification(double temp, double humidity) {
     final title = 'Smart Home';
     String body = '';
-    String tags='';
-    String? sound;
+    String tags = '';
+    String? channelId;
     final token = PushNotificationHelper().getFcmToken()!;
-    if((temp>= 25 && temp <=28) && (humidity >= 65 && humidity<=85)){
+    if ((temp >= 25 && temp <= 28) && (humidity >= 65 && humidity <= 85)) {
       body = 'Nhiệt độ hiện tại là $temp độ, độ ẩm là $humidity%';
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
-          StaticsType.TEMPERATURE, temp)
+              StaticsType.TEMPERATURE, temp)
           .label;
-    }
-    else if(temp<25 || temp>28){
+      channelId = NotificationType.NORMAL.;
+    } else if (temp < 25 || temp > 28) {
       body = 'Cảnh báo nhiệt độ vượt ngưỡng $temp độ';
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
-          StaticsType.TEMPERATURE, temp)
+              StaticsType.TEMPERATURE, temp)
           .label;
-      sound = NotificationType.ALERT.soundPath;
+      channelId = NotificationType.ALERT.soundPath;
     }
-    if(humidity>85 || humidity<65){
+    if (humidity > 85 || humidity < 65) {
       body = 'Cảnh báo độ ẩm vượt ngưỡng $humidity%';
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
-          StaticsType.HUMIDITY, humidity)
+              StaticsType.HUMIDITY, humidity)
           .label;
-      sound = NotificationType.ALERT.soundPath;
+      channelId = NotificationType.NORMAL.soundPath;
     }
     mainUseCase.sendPushNotification(PushNotificationRequest(
         priority: 'HIGH',
@@ -167,12 +168,6 @@ class HomeController extends BaseController {
           clickAction: 'FLUTTER_NOTIFICATION_CLICK',
         ),
         notification: NotificationRequest(
-          title: title,
-          body: body,
-          tag: tags,
-          sound: sound
-        )
-    ));
+            title: title, body: body, tag: tags, sound: channelId)));
   }
-
 }

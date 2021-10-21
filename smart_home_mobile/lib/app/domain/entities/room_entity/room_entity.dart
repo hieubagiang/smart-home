@@ -23,7 +23,6 @@ class RoomEntity {
   }
 
   void changeDeviceStatus(MessageEntity messageEntity) {
-
     this.devices?.forEach((element) {
       if (element.digitalIo == messageEntity.digitalIo) {
         element.setStatus(messageEntity);

@@ -1,4 +1,1 @@
-
-class StringConstants {
-
-}
+class StringConstants {}

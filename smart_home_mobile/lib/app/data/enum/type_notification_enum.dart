@@ -4,14 +4,15 @@ import 'package:smart_home/app/data/enum/statics_enum.dart';
 ///Config Channel
 ///
 const defaultNotificationChannel = "Chung";
-const defaultNotificationChannelId = "smart_home_global_channel";
+const defaultNotificationChannelId = "smart_home_default_channel";
 const defaultNotificationChannelDescription =
     "Channel for default notification";
 const notificationIconPath = '@mipmap/ic_launcher';
 const defaultNotificationSoundPath = 'normal';
 
 const staticsNotificationChannel = "Thống kê dữ liệu";
-const staticsNotificationChannelId = "smart_home_statics_channel";
+const staticsNotificationChannelId = "smart_ho"
+    "me_statics_channel";
 const staticsNotificationChannelDescription =
     "Channel for statics notification";
 const staticsNotificationSoundPath = '';
@@ -86,13 +87,12 @@ extension NotificationTypeExtension on NotificationType {
         return 'STATICS';
       case NotificationType.NORMAL:
         return 'NORMAL';
-        case NotificationType.ALERT:
+      case NotificationType.ALERT:
         return 'ALERT';
       default:
         return '';
     }
   }
-
 
   String getMessage(StaticsType staticsType, String value) {
     switch (this) {
@@ -100,7 +100,7 @@ extension NotificationTypeExtension on NotificationType {
         return '${staticsType.label} hiện tại là $value độ';
       case NotificationType.NORMAL:
         return 'NORMAL';
-        case NotificationType.ALERT:
+      case NotificationType.ALERT:
         return '${staticsType.label} vượt ngưỡng an toàn: $value độ';
       default:
         return '';
@@ -150,6 +150,7 @@ extension NotificationTypeExtension on NotificationType {
         return staticsNotificationChannelDescription;
     }
   }
+
   Importance get importance {
     switch (this) {
       case NotificationType.NORMAL:

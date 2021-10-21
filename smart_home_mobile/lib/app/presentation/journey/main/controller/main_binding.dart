@@ -17,11 +17,10 @@ class MainBinding implements Bindings {
     ///binding push notification
     Get.lazyPut(() => PushNotificationApi(dio));
     Get.lazyPut(
-            () => PushNotificationRepositoryImpl(Get.find<PushNotificationApi>()));
+        () => PushNotificationRepositoryImpl(Get.find<PushNotificationApi>()));
     Get.lazyPut(() => MainUseCaseImpl(
         pushNotificationRepository:
-        Get.find<PushNotificationRepositoryImpl>()));
-
+            Get.find<PushNotificationRepositoryImpl>()));
 
     Get.lazyPut(() => UserApi(dio));
     Get.lazyPut(() => RoomApi(dio));
@@ -31,6 +30,6 @@ class MainBinding implements Bindings {
         Get.find<UserRepositoryImpl>(), Get.find<RoomRepositoryImpl>()));
     Get.lazyPut(() => HomeController(Get.find<MainUseCaseImpl>()));
 
-      Get.lazyPut(() => MainController(Get.find<MainUseCaseImpl>()));
+    Get.lazyPut(() => MainController(Get.find<MainUseCaseImpl>()));
   }
 }

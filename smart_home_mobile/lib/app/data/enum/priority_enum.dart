@@ -22,6 +22,7 @@ extension PriorityTypeExtension on PriorityType {
         return -1;
     }
   }
+
   String get label {
     switch (this) {
       case PriorityType.LOW:

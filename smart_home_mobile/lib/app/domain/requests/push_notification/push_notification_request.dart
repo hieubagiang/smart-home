@@ -1,10 +1,10 @@
-import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:smart_home/app/domain/requests/push_notification/notification_request.dart';
 import 'package:smart_home/app/domain/requests/push_notification/push_notification_data_request.dart';
 
 part 'push_notification_request.g.dart';
+
 @JsonSerializable()
 class PushNotificationRequest {
   PushNotificationRequest({
@@ -40,6 +40,4 @@ class PushNotificationRequest {
       _$PushNotificationRequestFromJson(json);
 
   Map<String, dynamic> toJson() => _$PushNotificationRequestToJson(this);
-
 }
-

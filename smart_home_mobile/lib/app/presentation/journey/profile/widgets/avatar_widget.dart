@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home/app/common/constants/image_constants.dart';
 import 'package:smart_home/app/common/constants/layout_constant.dart';
 
 class AvatarWidget extends StatelessWidget {
@@ -13,18 +12,18 @@ class AvatarWidget extends StatelessWidget {
           child: Container(
               height: SizeUtils.avatarSize,
               width: SizeUtils.avatarSize,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ]
-              ),
-              child: Icon(Icons.person,size: SizeUtils.avatarSize,)),
+              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ]),
+              child: Icon(
+                Icons.person,
+                size: SizeUtils.avatarSize,
+              )),
         ),
         // Container(
         //   height: LayoutConstants.smallIconBtnSize,
@@ -46,5 +45,4 @@ class AvatarWidget extends StatelessWidget {
       ],
     );
   }
-
 }

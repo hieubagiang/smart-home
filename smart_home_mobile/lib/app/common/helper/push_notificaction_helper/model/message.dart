@@ -22,7 +22,7 @@ class CloudMessageModel {
   });
 
   final String? name;
-  final Map<String,dynamic>? data;
+  final Map<String, dynamic>? data;
   final MessageNotification? notification;
   final Android? android;
   final WebPush? webPush;
@@ -34,7 +34,7 @@ class CloudMessageModel {
 
   CloudMessageModel copyWith({
     String? name,
-    Map<String,dynamic>? data,
+    Map<String, dynamic>? data,
     MessageNotification? notification,
     Android? android,
     WebPush? webPush,
@@ -57,33 +57,35 @@ class CloudMessageModel {
         condition: condition ?? this.condition,
       );
 
-  factory CloudMessageModel.fromRawJson(String str) => CloudMessageModel.fromJson(json.decode(str));
+  factory CloudMessageModel.fromRawJson(String str) =>
+      CloudMessageModel.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory CloudMessageModel.fromJson(Map<String, dynamic> json) => CloudMessageModel(
-    name: json["name"],
-    data: jsonDecode(json["data"]),
-    notification: MessageNotification.fromJson(json["notification"]),
-    android: Android.fromJson(json["android"]),
-    webPush: WebPush.fromJson(json["webPush"]),
-    apns: Apns.fromJson(json["apns"]),
-    fcmOptions: AndroidFcmOptions.fromJson(json["fcm_options"]),
-    token: json["token"],
-    topic: json["topic"],
-    condition: json["condition"],
-  );
+  factory CloudMessageModel.fromJson(Map<String, dynamic> json) =>
+      CloudMessageModel(
+        name: json["name"],
+        data: jsonDecode(json["data"]),
+        notification: MessageNotification.fromJson(json["notification"]),
+        android: Android.fromJson(json["android"]),
+        webPush: WebPush.fromJson(json["webPush"]),
+        apns: Apns.fromJson(json["apns"]),
+        fcmOptions: AndroidFcmOptions.fromJson(json["fcm_options"]),
+        token: json["token"],
+        topic: json["topic"],
+        condition: json["condition"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "data": jsonEncode(data),
-    "notification": notification?.toJson(),
-    "android": android?.toJson(),
-    "webPush": webPush?.toJson(),
-    "apns": apns?.toJson(),
-    "fcm_options": fcmOptions?.toJson(),
-    "token": token,
-    "topic": topic,
-    "condition": condition,
-  };
+        "name": name,
+        "data": jsonEncode(data),
+        "notification": notification?.toJson(),
+        "android": android?.toJson(),
+        "webPush": webPush?.toJson(),
+        "apns": apns?.toJson(),
+        "fcm_options": fcmOptions?.toJson(),
+        "token": token,
+        "topic": topic,
+        "condition": condition,
+      };
 }

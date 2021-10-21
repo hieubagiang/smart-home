@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'base_controller.dart';
 
-export 'base_controller.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+
+export 'base_controller.dart';
+
 /// [Example]
 ///
 /// class MemberWidget extends BaseViewModel<MemberController> {

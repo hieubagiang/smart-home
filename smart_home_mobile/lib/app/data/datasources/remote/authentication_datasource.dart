@@ -1,3 +1,1 @@
-class AuthenticationDataSource {
-
-}
+class AuthenticationDataSource {}

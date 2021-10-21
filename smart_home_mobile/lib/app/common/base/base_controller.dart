@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:smart_home/app/common/utils/functions.dart';
 import 'package:smart_home/app/common//helper/storage_helper.dart';
+import 'package:smart_home/app/common/constants/constants.dart';
+import 'package:smart_home/app/common/utils/functions.dart';
+import 'package:smart_home/app/common/utils/strings.dart';
 import 'package:smart_home/app/domain/repositories/repositories.dart';
 import 'package:smart_home/app/presentation/routes/app_pages.dart';
-import 'package:smart_home/app/common/constants/constants.dart';
-import 'package:smart_home/app/common/utils/strings.dart';
 
 import 'base_common_widgets.dart';
 import 'widget_state.dart';
@@ -98,9 +98,11 @@ class BaseController extends GetxController
   @override
   void onTokenExpired(String code, String message) {
     super.onTokenExpired(code, message);
-    showDialogMessage(message:StringUtils.getMessageErrorFromServer(message, code), onClick: () {
-      logOut();
-    });
+    showDialogMessage(
+        message: StringUtils.getMessageErrorFromServer(message, code),
+        onClick: () {
+          logOut();
+        });
   }
 
   @override

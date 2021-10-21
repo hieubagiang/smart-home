@@ -1,15 +1,12 @@
-
-import 'dart:convert';
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'push_notification_data_request.g.dart';
+
 @JsonSerializable()
 class PushNotificationDataRequest {
   PushNotificationDataRequest({
     this.title,
     this.body,
-    this.priority,
     this.clickAction,
     this.tag,
   });
@@ -18,8 +15,6 @@ class PushNotificationDataRequest {
   final String? title;
   @JsonKey(name: 'body')
   final String? body;
-  @JsonKey(name: 'priority')
-  final int? priority;
   @JsonKey(name: 'click_action')
   final String? clickAction;
   @JsonKey(name: 'tag')
@@ -35,7 +30,6 @@ class PushNotificationDataRequest {
       PushNotificationDataRequest(
         title: title ?? this.title,
         body: body ?? this.body,
-        priority: priority ?? this.priority,
         clickAction: clickAction ?? this.clickAction,
         tag: tag ?? this.tag,
       );
@@ -47,6 +41,6 @@ class PushNotificationDataRequest {
 
   @override
   String toString() {
-    return 'PushNotificationDataRequest{title: $title, body: $body, priority: $priority, clickAction: $clickAction, tag: $tag}';
+    return 'PushNotificationDataRequest{title: $title, body: $body, clickAction: $clickAction, tag: $tag}';
   }
 }
