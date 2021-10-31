@@ -129,7 +129,7 @@ class HomeController extends BaseController {
   void setStatics(double temp, double humidity) {
     this.temp.value = temp;
     this.humidity.value = humidity;
-    _sendPushNotification(temp, humidity);
+    //_sendPushNotification(temp, humidity);
   }
 
   void _sendPushNotification(double temp, double humidity) {

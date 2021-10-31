@@ -9,6 +9,7 @@ class MockData {
             title: 'Đèn',
             icon: Icons.lightbulb_outline,
             status: 1,
+            digitalIo:2,
             isAuto: true,
             topic: 'smarthome'),
         Device(
@@ -33,6 +34,7 @@ class MockData {
             icon: FontAwesomeIcons.fan,
             status: 0,
             isAuto: false,
+            digitalIo:4,
             topic: ''),
       ];
 
