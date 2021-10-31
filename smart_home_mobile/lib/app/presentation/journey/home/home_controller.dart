@@ -143,7 +143,7 @@ class HomeController extends BaseController {
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
               StaticsType.TEMPERATURE, temp)
           .label;
-      channelId = NotificationType.NORMAL.;
+      channelId = NotificationType.NORMAL.notificationId;
     } else if (temp < 25 || temp > 28) {
       body = 'Cảnh báo nhiệt độ vượt ngưỡng $temp độ';
       tags = NotificationTypeEnum.getNotificationTypeFromMessage(
